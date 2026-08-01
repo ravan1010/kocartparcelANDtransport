@@ -10,7 +10,7 @@ function App() {
         <>
             <Router>
                 <Routes>
-                    <Route path="/" element={<Login />} />
+                    <Route path="/lo" element={<Login />} />
                     <Route path="/parcelandtransport-auth-success" element={<Verify />} />             
 
                 </Routes>
