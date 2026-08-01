@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Login() {
   console.log('')
   const handleGoogleLogin = () => {
-    window.open("https://serverside.kocart.online/auth/google/deliveryBoy", "_self");
+    window.open("https://serverside.kocart.online/auth/google/parcel", "_self");
   };
 
   return (
