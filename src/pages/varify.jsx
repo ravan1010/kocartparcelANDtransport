@@ -7,11 +7,9 @@ function Verify() {
   const navigate = useNavigate();
 
   useEffect(() => {
-
-    console.log("delivery");
     
     api
-      .get("/auth/parcelANDtransport/cookie") // cookie auto sent
+      .get("/auth/parcelandtransport/cookie") // cookie auto sent
       .then((res) => {
         console.log("User:", res.data);
         navigate("/details"); // or wherever
