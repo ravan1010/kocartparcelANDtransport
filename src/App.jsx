@@ -13,10 +13,10 @@ function App() {
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/parcelandtransport-auth-success" element={<Verify />} />   
-<Route element={<Protected />}>
-                        <Route path='/' element={<Deliverydashboard />} />
+                    <Route element={<Protected />}>
+                        <Route path='/' element={<Verify />} />
                     </Route>
-                    </Routes>    
+                </Routes>    
             </Router>
         </>
     );
