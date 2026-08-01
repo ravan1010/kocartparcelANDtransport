@@ -1,6 +1,6 @@
 // useAuthCheck.js
 import { useEffect, useState } from "react";
-import api from "../api";
+import api from "../../api";
 
 const useDeliveryBoyAuth = () => {
   const [user, setUser] = useState(null);
@@ -11,7 +11,7 @@ const useDeliveryBoyAuth = () => {
 
     const checkAuth = async () => {
       try {
-        const res = await api.get("/api/deliveryboy/token", {
+        const res = await api.get("/api/parcelandtransport/token", {
           withCredentials: true, 
         });
 
