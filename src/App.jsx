@@ -11,7 +11,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/parcelANDtransport-auth-success" element={<Verify />} />             
+                    <Route path="/parcelandtransport-auth-success" element={<Verify />} />             
 
                 </Routes>
             </Router>
