@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import useDeliveryBoyAuth from "./authmiddleware"; 
 
-const ProtectedDeliveryBoy = () => {
+const Protected = () => {
   const { isAdmin, checking } = useDeliveryBoyAuth();
 
   if (checking) return <div>Checking delivery boy access...</div>;
@@ -9,5 +9,5 @@ const ProtectedDeliveryBoy = () => {
   return isAdmin ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
-export default ProtectedDeliveryBoy;  
+export default Protected;  
  
