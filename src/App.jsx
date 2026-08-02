@@ -16,6 +16,7 @@ function App() {
                     <Route path="/parcel-auth-success" element={<Verify />} />   
                     <Route element={<Protected />}>
                         <Route path='/details' element={<Details />} />
+                        <Route path='/' element={<Details />} />
                     </Route>
                 </Routes>    
             </Router>

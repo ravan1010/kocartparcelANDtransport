@@ -1,6 +1,6 @@
 import { getToken } from "firebase/messaging";
 import { messaging } from "./firebase";
-import api from "../api";
+import api from "../../api.js";
 
 export const generateAndSaveFCMToken = async () => {
 
@@ -15,7 +15,7 @@ export const generateAndSaveFCMToken = async () => {
     console.log(token)
 
     if (token) {
-      await api.post("/api/delivery-boy/fcmToken", { fcmToken: token });
+      await api.post("/api/parcelandtransport/fcmToken", { fcmToken: token });
       console.log("FCM token saved");
     }
   } catch (err) {

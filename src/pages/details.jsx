@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import api from '../api';
+import api from '../../api.js';
 import axios from "axios";
 import { generateAndSaveFCMToken } from '../utili/token';
 
@@ -9,6 +9,9 @@ const Details = () => {
 
   const [city, setcity] = useState('city');
   const [Number, setNumber] = useState('');
+  const [vehicalNO, setvehicalNO] = useState('');
+  const [vehicalName, setvehicalName] = useState('');
+  const [serviceType, setserviceType] = useState('');
   const [error, setError] = useState('');
   const [latitude, setlatitude] = useState(null)
   const [longitude, setlongitude] = useState(null)
@@ -69,17 +72,25 @@ const Details = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (city === 'city' || !latitude) {
+    if (city === 'city' || !latitude ) {
       alert(`use live location`)
     }
 
-    if (!Number) {
-      alert(`enter your number`)
+    if (!Number || !vehicalNO || !vehicalName || !serviceType) {
+      alert(`enter all field`)
     }
     
     try {
 
-      await api.post("/api/delivery-boy/location", { city: city, Number: Number, longitude: longitude, latitude: latitude },
+      await api.put("/api/parcelandtransport/details", { 
+        city: city, 
+        Number: Number, 
+        longitude: longitude, 
+        latitude: latitude,
+        vehicalNO: vehicalNO,
+        vehicalName: vehicalName,
+        serviceType: serviceType,
+      },
         { withCredentials: true })
         .then((res) => {
           // setsuccess(res.data.message)
@@ -113,6 +124,42 @@ const Details = () => {
               minLength={10}
               maxLength={10}
             />
+
+            <input
+              type="text"
+              placeholder='enter your vehicalNO'
+              value={vehicalNO}
+              onChange={(e) => setvehicalNO(e.target.value)}
+              className='border w-full px-3 py-2 rounded my-4'
+              maxLength={15}
+            />
+
+            <input
+              type="text"
+              placeholder='enter your vehicalName '
+              value={vehicalName}
+              onChange={(e) => setvehicalName(e.target.value)}
+              className='border w-full px-3 py-2 rounded my-4'
+              maxLength={15}
+            />
+
+            <label htmlFor="category" >Choose serviceType</label>
+              <select
+                value={serviceType}
+                id='category'
+                onChange={(e) => setserviceType(e.target.value)}
+                className="w-full px-3 py-0 border-1 outline-none overflow-scroll mb-0 h-10"
+              >
+                <option value="bike_parcel">bike parcel</option>
+                <option value="goods_auto">goods auto </option>
+                <option value="auto_passenger">auto passenger</option>
+                {/* <option value="FashionANDApparel">Fashion & Apparel</option>
+                <option value="ElectronicsANDGadgets">Electronics & Gadgets</option>
+                <option value="BeautyANDPersonalCare">Beauty & Personal Care</option>
+                <option value="HomeANDLiving">Home & Living</option>
+                <option value="SportsANDOutdoors">Sports & Outdoors</option>
+                <option value="ToysANDGames">Toys & Games</option>  */}
+              </select>
 
             <button
               type='button'
