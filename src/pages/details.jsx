@@ -5,7 +5,7 @@ import axios from "axios";
 import { generateAndSaveFCMToken } from '../utili/token';
 
 
-const Location = () => {
+const Details = () => {
 
   const [city, setcity] = useState('city');
   const [Number, setNumber] = useState('');
@@ -138,4 +138,4 @@ const Location = () => {
   )
 }
 
-export default Location
+export default Details;
