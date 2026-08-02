@@ -11,7 +11,7 @@ const Details = () => {
   const [Number, setNumber] = useState('');
   const [vehicalNO, setvehicalNO] = useState('');
   const [vehicalName, setvehicalName] = useState('');
-  const [serviceType, setserviceType] = useState('');
+  const [serviceType, setserviceType] = useState('bike_parcel');
   const [error, setError] = useState('');
   const [latitude, setlatitude] = useState(null)
   const [longitude, setlongitude] = useState(null)
