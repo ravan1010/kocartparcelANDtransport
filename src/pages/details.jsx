@@ -148,7 +148,7 @@ const Details = () => {
                 value={serviceType}
                 id='category'
                 onChange={(e) => setserviceType(e.target.value)}
-                className="w-full px-3 py-0 border-1 outline-none overflow-scroll mb-2 h-10"
+                className="w-full px-3 py-0 border-1 outline-none overflow-scroll mb-4 h-10"
               >
                 <option value="bike_parcel">bike parcel</option>
                 <option value="goods_auto">goods auto </option>
