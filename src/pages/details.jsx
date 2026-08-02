@@ -8,7 +8,7 @@ import { generateAndSaveFCMToken } from '../utili/token';
 const Details = () => {
 
   const [city, setcity] = useState('city');
-  const [Number, setNumber] = useState('');
+const [phoneNumber, setPhoneNumber] = useState('');
   const [vehicalNO, setvehicalNO] = useState('');
   const [vehicalName, setvehicalName] = useState('');
   const [serviceType, setserviceType] = useState('bike_parcel');
@@ -76,7 +76,7 @@ const Details = () => {
       alert(`use live location`)
     }
 
-    if (!Number || !vehicalNO || !vehicalName || !serviceType) {
+    if (!phoneNumber || !vehicalNO || !vehicalName || !serviceType) {
       alert(`enter all field`)
     }
     
@@ -84,7 +84,7 @@ const Details = () => {
 
       await api.put("/api/parcelandtransport/details", { 
         city: city, 
-        Number: Number, 
+        phoneNumber,
         longitude: longitude, 
         latitude: latitude,
         vehicalNO: vehicalNO,
@@ -118,8 +118,8 @@ const Details = () => {
             <input
               type="tel"
               placeholder='enter your number'
-              value={Number}
-              onChange={(e) => setNumber(e.target.value)}
+          value={phoneNumber}
+onChange={(e) => setPhoneNumber(e.target.value)}
               className='border w-full px-3 py-2 rounded my-4'
               minLength={10}
               maxLength={10}
