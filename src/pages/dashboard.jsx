@@ -11,10 +11,6 @@ const Dashboard = () => {
   const [activate, setactivate] = useState(null)
   const [step, setstep] = useState(1);
 
-
-  // const [error, setError] = useState('');
-  // const [success, setsuccess] = useState('');
-
   const fetchDashboard = async () => {
     try {
       const res = await api.get('/api/parcel/dashboard')
@@ -153,11 +149,6 @@ const Dashboard = () => {
 
         </div>
       </div>
-
-
- 
-
-
     </div>
   )
 }
