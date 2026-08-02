@@ -47,7 +47,7 @@ const Details = () => {
                 lat,
                 lon,
                 format: "json",
-                apiKey: import.meta.env.VITE_GEOAPIFY_KEY,
+                apiKey: '9101d57bd3a34d2194bb8222a55a6a3f',
               },
             }
           );
