@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react'
 import api from '../../api.js';
 import { ToggleRight, ToggleLeft } from 'lucide-react';
 import { generateAndSaveFCMToken } from '../utili/token.js';
+import PartnerNavbar from './navbar.jsx';
 
 const Dashboard = () => {
 
   const [kocartAmount, setkocartAmount] = useState(0);
   const [isOnline, setisOnline] = useState(false);
-  const [activate, setactivate] = useState(null)
+  const [activate, setactivate] = useState(null);
+  const [serviceType, setserviceType] = useState(null);
   const [step, setstep] = useState(1);
 
   const fetchDashboard = async () => {
@@ -18,6 +20,7 @@ const Dashboard = () => {
       setisOnline(res.data.isOnline)
       setkocartAmount(res.data.kocartAmount || 0)
       setactivate(res.data.activate)
+      setserviceType(res.data.serviceType)
     } catch (error) {
       console.log(error)
     }
@@ -76,6 +79,7 @@ const Dashboard = () => {
 
   return (
     <div className="p-4 md:p-6 max-w-6xl mx-auto space-y-6">
+      <PartnerNavbar serviceType={serviceType} />
 
       {/* Delivery Status */}
       {/* Delivery Dashboard */}

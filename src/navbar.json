@@ -1,0 +1,52 @@
+{
+  "bike_parcel": [
+    {
+      "name": "Nearby Orders",
+      "path": "/partner/bike/orders"
+    },
+    {
+      "name": "Assigned",
+      "path": "/partner/bike/assigned"
+    },
+    {
+      "name": "Picked Up",
+      "path": "/partner/bike/picked-up"
+    },
+    {
+      "name": "History",
+      "path": "/partner/bike/history"
+    }
+  ],
+  "goods_auto": [
+    {
+      "name": "Nearby Loads",
+      "path": "/partner/goods/orders"
+    },
+    {
+      "name": "Assigned Trip",
+      "path": "/partner/goods/assigned"
+    },
+    {
+      "name": "In Transit",
+      "path": "/partner/goods/transit"
+    },
+    {
+      "name": "History",
+      "path": "/partner/goods/history"
+    }
+  ],
+  "auto_passenger": [
+    {
+      "name": "Ride Requests",
+      "path": "/partner/auto/requests"
+    },
+    {
+      "name": "Current Ride",
+      "path": "/partner/auto/current"
+    },
+    {
+      "name": "Trip History",
+      "path": "/partner/auto/history"
+    }
+  ]
+}

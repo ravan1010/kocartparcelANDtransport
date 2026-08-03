@@ -5,6 +5,9 @@ import Verify from './pages/varify';
 import Protected from './auth/authroute';
 import Details from './pages/details';
 import Dashboard from './pages/dashboard';
+import NearbyOrders from './pages/avilableorder';
+import CurrentOrder from './pages/CurrentOrder';
+import PickedUpOrder from './pages/pickeduporder';
 
 
 function App() {
@@ -18,6 +21,9 @@ function App() {
                     <Route element={<Protected />}>
                         <Route path='/details' element={<Details />} />
                         <Route path='/' element={<Dashboard />} />
+                        <Route path='/available/order' element={<NearbyOrders />} />
+                        <Route path='/current/order' element={< CurrentOrder /> } />
+                        <Route path='/pickup/order' element={ <PickedUpOrder />} />
                     </Route>
                 </Routes>    
             </Router>
