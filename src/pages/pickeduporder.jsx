@@ -64,7 +64,13 @@ export default function PickedUpOrder() {
       <div>
         <h3 className="font-semibold text-lg">Customer</h3>
         <p>{order.drop.name}</p>
-        <p>{order.drop.phone}</p>
+        <p>Phone: <a
+                      href={`tel:${order.drop?.phone}`}
+                      className="font-medium text-blue-600"
+                    >
+                      📞 {order.drop?.phone}
+                    </a>
+                    </p>
       </div>
 
       {/* Pickup */}

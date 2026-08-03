@@ -64,7 +64,13 @@ export default function CurrentOrder() {
         </h3>
 
         <p>Name: {order.pickup?.name}</p>
-        <p>Phone: {order.pickup?.phone}</p>
+        <p>Phone: <a
+                      href={`tel:${order.pickup?.phone}`}
+                      className="font-medium text-blue-600"
+                    >
+                      📞 {order.pickup?.phone}
+                    </a>
+                    </p>
       </div>
 
       <hr className="my-4" />
