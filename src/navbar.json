@@ -2,19 +2,15 @@
   "bike_parcel": [
     {
       "name": "Nearby Orders",
-      "path": "/partner/bike/orders"
+      "path": "/available/order"
     },
     {
       "name": "Assigned",
-      "path": "/partner/bike/assigned"
+      "path": "/current/order"
     },
     {
       "name": "Picked Up",
-      "path": "/partner/bike/picked-up"
-    },
-    {
-      "name": "History",
-      "path": "/partner/bike/history"
+      "path": "/pickup/order"
     }
   ],
   "goods_auto": [
