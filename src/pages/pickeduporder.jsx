@@ -63,15 +63,11 @@ export default function PickedUpOrder() {
       {/* Customer */}
       <div>
         <h3 className="font-semibold text-lg">Customer</h3>
-        <p>{order.customer.name}</p>
-        <p>{order.customer.Number}</p>
+        <p>{order.drop.name}</p>
+        <p>{order.drop.phone}</p>
       </div>
 
       {/* Pickup */}
-      <div>
-        <h3 className="font-semibold">Pickup Location</h3>
-        <p>{order.pickup.address}</p>
-      </div>
 
       {/* Drop */}
       <div>

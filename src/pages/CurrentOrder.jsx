@@ -63,8 +63,8 @@ export default function CurrentOrder() {
           Customer Details
         </h3>
 
-        <p>Name: {order.customer?.name}</p>
-        <p>Phone: {order.customer?.Number}</p>
+        <p>Name: {order.pickup?.name}</p>
+        <p>Phone: {order.pickup?.phone}</p>
       </div>
 
       <hr className="my-4" />
