@@ -103,7 +103,7 @@ const Dashboard = () => {
 
             <div>
               <h2 className="text-xl font-bold text-gray-800">
-                 Partner
+                Partner
               </h2>
 
               <p
@@ -118,21 +118,26 @@ const Dashboard = () => {
 
           </div>
 
-          {/* Center - Dashboard Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1">
+          {serviceType === bike_parcel && (
+            <>
+              {/* Center - Dashboard Cards */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1">
 
-            <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-center">
-              <p className="text-xs text-gray-500">
-                KOCART Cash
-              </p>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-center">
+                  <p className="text-xs text-gray-500">
+                    KOCART Cash
+                  </p>
 
-              <h2 className="text-2xl font-bold text-yellow-700">
-                ₹{Number(kocartAmount || 0).toFixed(2)}
+                  <h2 className="text-2xl font-bold text-yellow-700">
+                    ₹{Number(kocartAmount || 0).toFixed(2)}
 
-              </h2>
-            </div>
+                  </h2>
+                </div>
 
-          </div>
+              </div>
+            </>)
+
+          }
 
           {/* Right - Toggle */}
           <div className="flex flex-col items-center gap-2">
