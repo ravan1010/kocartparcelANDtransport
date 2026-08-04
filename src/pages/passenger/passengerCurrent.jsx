@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../api.js";
+import api from "../../../api.js";
 import { useNavigate } from "react-router-dom";
 
 export default function PassengerCurrentOrder() {
