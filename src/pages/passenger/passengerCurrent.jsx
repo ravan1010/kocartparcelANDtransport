@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import api from "../../api.js";
 import { useNavigate } from "react-router-dom";
 
-export default function CurrentOrder() {
+export default function PassengerCurrentOrder() {
 
-        const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   const [order, setOrder] = useState(null);
   const [pickupOtp, setPickupOtp] = useState("");
@@ -63,24 +62,15 @@ export default function CurrentOrder() {
           Customer Details
         </h3>
 
-        <p>Name: {order.pickup?.name}</p>
+        <p>Name: {order.passenger?.name}</p>
         <p>Phone: <a
-                      href={`tel:${order.pickup?.phone}`}
+                      href={`tel:${order.passenger?.phone}`}
                       className="font-medium text-blue-600"
                     >
-                      📞 {order.pickup?.phone}
+                      📞 {order.passenger?.phone}
                     </a>
         </p>
-        <h3 className="font-semibold text-lg">
-          parcel Details
-        </h3>
-        <p>itemName : {order.parcel.itemName}</p>
-        <p>category : {order.parcel.category}</p>
-        <p>weight : {order.parcel.weight}</p>
-        <p>quantity : {order.parcel.quantity}</p>
-        <p>fragile : {order.parcel.fragile}</p>
-        <p>instructions : {order.parcel.instructions}</p>
-
+        <p>passenger : {order.passenger.passengers} </p>
       </div>
 
       <hr className="my-4" />
@@ -114,10 +104,6 @@ export default function CurrentOrder() {
 
       <p>
         <strong>Distance:</strong> {order.distance} km
-      </p>
-
-      <p>
-        <strong>Amount:</strong> ₹{order.amount}
       </p>
 
       <p>

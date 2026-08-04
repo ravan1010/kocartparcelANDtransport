@@ -8,6 +8,12 @@ import Dashboard from './pages/dashboard';
 import NearbyOrders from './pages/avilableorder';
 import CurrentOrder from './pages/CurrentOrder';
 import PickedUpOrder from './pages/pickeduporder';
+import PassengerNearbyOrders from './pages/passenger/passengerAvilable';
+import PassengerCurrentOrder from './pages/passenger/passengerCurrent';
+import PassengerPickedUpOrder from './pages/passenger/passengerPickup';
+import GoodsNearbyOrders from './pages/goodsAuto/goodsAvailable';
+import GoodsCurrentOrder from './pages/goodsAuto/goodscurrent';
+import GoodsPickedUpOrder from './pages/goodsAuto/goodsPickup';
 
 
 function App() {
@@ -24,6 +30,17 @@ function App() {
                         <Route path='/available/order' element={<NearbyOrders />} />
                         <Route path='/current/order' element={< CurrentOrder /> } />
                         <Route path='/pickup/order' element={ <PickedUpOrder />} />
+
+                        <Route path='/passenger/available/order' element={<PassengerNearbyOrders />} />
+                        <Route path='/passenger/current/order' element={<PassengerCurrentOrder />} />
+                        <Route path='/passenger/pickup/order' element={< PassengerPickedUpOrder />} />
+
+
+                        <Route path='/goods/available/order' element={<GoodsNearbyOrders />} />
+                        <Route path='/goods/current/order' element={<GoodsCurrentOrder />} />
+                        <Route path='/goods/pickup/order' element={< GoodsPickedUpOrder />} />
+
+
                     </Route>
                 </Routes>    
             </Router>

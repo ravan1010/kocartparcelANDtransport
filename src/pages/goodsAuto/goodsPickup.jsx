@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../api.js";
 import { useNavigate } from "react-router-dom";
 
-export default function PickedUpOrder() {
+export default function GoodsPickedUpOrder() {
 
     const navigate = useNavigate();
 
@@ -61,31 +61,16 @@ export default function PickedUpOrder() {
       </h2>
 
       {/* Customer */}
-      <div className="mb-4">
-        <h3 className="font-semibold text-lg">
-          Customer Details
-        </h3>
-
-        <p>Name: {order.pickup?.name}</p>
+      <div>
+        <h3 className="font-semibold text-lg">Customer</h3>
+        <p>{order.drop.name}</p>
         <p>Phone: <a
-                      href={`tel:${order.pickup?.phone}`}
+                      href={`tel:${order.drop?.phone}`}
                       className="font-medium text-blue-600"
                     >
-                      📞 {order.pickup?.phone}
+                      📞 {order.drop?.phone}
                     </a>
                     </p>
-
-        <h3 className="font-semibold text-lg">
-          goods Details
-        </h3>           
-        <p>itemType : {order.goods.itemType}</p>
-        <p>estimatedWeight : {order.goods.estimatedWeight}</p>
-        <p>helpersRequired : {order.goods.helpersRequired}</p>
-        <p>loadingRequired : {order.goods.loadingRequired}</p>
-        <p>unloadingRequired : {order.goods.unloadingRequired}</p>
-        <p>instructions : {order.goods.instructions}</p>
-
-
       </div>
 
       {/* Pickup */}

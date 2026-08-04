@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import api from "../../api";
+import api from "../../../api";
 import { useNavigate } from "react-router-dom";
 
-export default function NearbyOrders() {
+export default function PassengerNearbyOrders() {
     const navigate = useNavigate();
 
   const [orders, setOrders] = useState([]);
@@ -11,7 +11,7 @@ export default function NearbyOrders() {
   const fetchNearbyOrders = async () => {
     try {
       const res = await api.get("/api/partner/orders/nearby");
-      setOrders(res.data.bike_parcel);
+      setOrders(res.data.auto_passenger);
     } catch (err) {
       console.log(err);
     } finally {
@@ -81,9 +81,6 @@ export default function NearbyOrders() {
                 <strong>Distance:</strong> {order.distance} km
               </p>
 
-              <p>
-                <strong>Amount:</strong> ₹{order.amount}
-              </p>
 
               <button
                 className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg"

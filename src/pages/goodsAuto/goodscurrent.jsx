@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import api from "../../api.js";
+import api from "../../../api.js";
 import { useNavigate } from "react-router-dom";
 
-export default function CurrentOrder() {
+export default function GoodsCurrentOrder() {
 
         const navigate = useNavigate();
 
@@ -70,16 +70,18 @@ export default function CurrentOrder() {
                     >
                       📞 {order.pickup?.phone}
                     </a>
-        </p>
+                    </p>
+
         <h3 className="font-semibold text-lg">
-          parcel Details
-        </h3>
-        <p>itemName : {order.parcel.itemName}</p>
-        <p>category : {order.parcel.category}</p>
-        <p>weight : {order.parcel.weight}</p>
-        <p>quantity : {order.parcel.quantity}</p>
-        <p>fragile : {order.parcel.fragile}</p>
-        <p>instructions : {order.parcel.instructions}</p>
+          goods Details
+        </h3>           
+        <p>itemType : {order.goods.itemType}</p>
+        <p>estimatedWeight : {order.goods.estimatedWeight}</p>
+        <p>helpersRequired : {order.goods.helpersRequired}</p>
+        <p>loadingRequired : {order.goods.loadingRequired}</p>
+        <p>unloadingRequired : {order.goods.unloadingRequired}</p>
+        <p>instructions : {order.goods.instructions}</p>
+
 
       </div>
 

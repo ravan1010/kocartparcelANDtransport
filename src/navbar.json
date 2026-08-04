@@ -16,33 +16,30 @@
   "goods_auto": [
     {
       "name": "Nearby Loads",
-      "path": "/partner/goods/orders"
+      "path": "/goods/available/order"
     },
     {
       "name": "Assigned Trip",
-      "path": "/partner/goods/assigned"
+      "path": "/goods/current/orderd"
     },
     {
-      "name": "In Transit",
-      "path": "/partner/goods/transit"
+      "name": "In pickup",
+      "path": "/goods/pickup/order"
     },
-    {
-      "name": "History",
-      "path": "/partner/goods/history"
-    }
+   
   ],
   "auto_passenger": [
     {
       "name": "Ride Requests",
-      "path": "/partner/auto/requests"
+      "path": "/passenger/available/order"
     },
     {
       "name": "Current Ride",
-      "path": "/partner/auto/current"
+      "path": "/passenger/current/order"
     },
     {
-      "name": "Trip History",
-      "path": "/partner/auto/history"
+      "name": "Trip pickup",
+      "path": "/passenger/pickup/order"
     }
   ]
 }
