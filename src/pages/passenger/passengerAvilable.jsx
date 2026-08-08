@@ -75,7 +75,7 @@ export default function PassengerNearbyOrders() {
         orders.map((order) => (
           <div
             key={order._id}
-            className="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+            className="group bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden "
           >
             {/* Header */}
             <div className="px-5 py-4 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
