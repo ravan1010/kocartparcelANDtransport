@@ -234,7 +234,7 @@ export default function PassengerPickedUpOrder() {
           onClick={completeDelivery}
           className="w-full mt-4 bg-green-600 hover:bg-green-700 active:bg-green-800 text-white py-3.5 rounded-xl font-bold shadow-sm active:scale-[0.98] transition"
         >
-          ✓ Complete Delivery
+          ✓ Complete 
         </button>
 
       </div>
