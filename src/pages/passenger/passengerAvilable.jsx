@@ -33,7 +33,7 @@ export default function PassengerNearbyOrders() {
 
   const acceptOrder = async (orderId) => {
     try {
-      await api.put(`/api/partner/orders/accept/${orderId}`);
+      const res = await api.put(`/api/partner/orders/accept/${orderId}`);
 
       // Refresh nearby orders after accepting
 
