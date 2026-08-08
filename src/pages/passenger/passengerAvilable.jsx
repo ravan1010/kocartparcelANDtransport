@@ -229,7 +229,7 @@ export default function PassengerNearbyOrders() {
                     ? "bg-gray-300 text-gray-500 cursor-not-allowed shadow-none"
                     : "bg-green-600 hover:bg-green-700 active:bg-green-800 text-white hover:shadow-md cursor-pointer"
                   }
-  `}
+                `}
               >
                 <span>
                   {isDisabled ? "Accepting..." : "Accept Order"}
