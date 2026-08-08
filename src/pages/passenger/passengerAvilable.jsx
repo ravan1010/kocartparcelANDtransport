@@ -9,8 +9,11 @@ export default function PassengerNearbyOrders() {
   const [loading, setLoading] = useState(true);
 
   const fetchNearbyOrders = async () => {
+
+    let serviceType = "auto_passenger"
+
     try {
-      const res = await api.get("/api/partner/orders/nearby");
+      const res = await api.get(`/api/partner/orders/nearby/${serviceType}`);
       setOrders(res.data.auto_passenger);
     } catch (err) {
       console.log(err);
