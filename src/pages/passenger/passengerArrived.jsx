@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../../api.js";
 import { useNavigate } from "react-router-dom";
+import { updateBikeParcelDriverLocation } from "../liveupdate.js";
 
 export default function PassengerArrive() {
 
@@ -9,7 +10,6 @@ export default function PassengerArrive() {
   
 
   const [order, setOrder] = useState(null);
-  const [pickupOtp, setPickupOtp] = useState("");
 
   const fetchOrder = async () => {
     try {
@@ -23,6 +23,66 @@ export default function PassengerArrive() {
   useEffect(() => {
     fetchOrder();
   }, []);
+
+ useEffect(() => {
+    if (!order?._id) return;
+
+    if (order.status !== "driver_assigned") {
+      return;
+    }
+
+    const updateLocation = () => {
+      if (!navigator.geolocation) {
+        console.log("Geolocation is not supported");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          try {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            const data =
+              await updateBikeParcelDriverLocation(
+                latitude,
+                longitude
+              );
+
+            console.log("Location updated:", data);
+
+          } catch (error) {
+            console.error(
+              "Location update failed:",
+              error.response?.data || error.message
+            );
+          }
+        },
+        (error) => {
+          console.error("Location error:", error);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
+        }
+      );
+    };
+
+    // Update immediately
+    updateLocation();
+
+    // Update every 30 seconds
+    const interval = setInterval(
+      updateLocation,
+      30 * 1000
+    );
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [order?._id, order?.status]);
+
 
   const arrivedUpdate = async () => {
     try {
