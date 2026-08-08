@@ -10,7 +10,7 @@ export default function PassengerNearbyOrders() {
 
   const [oneclick, setOneclick] = useState(1);
 
-  const isDisabled = oneclick !== 1;  
+  const isDisabled = oneclick !== 1;
 
   const fetchNearbyOrders = async () => {
 
@@ -36,7 +36,7 @@ export default function PassengerNearbyOrders() {
   }, []);
 
   const acceptOrder = async (orderId) => {
-    if(oneclick === 2){
+    if (oneclick === 2) {
       return
     }
 
@@ -217,29 +217,28 @@ export default function PassengerNearbyOrders() {
                   →
                 </span>
               </button> */}
-            
-<button
-  disabled={isDisabled}
-  onClick={() => acceptOrder(order._id)}
-  className={`
-    mt-4 w-full flex items-center justify-center gap-2
-    font-bold py-3.5 rounded-2xl
-    shadow-sm transition-all duration-200
-    ${
-      isDisabled
-        ? "bg-gray-300 text-gray-500 cursor-not-allowed shadow-none"
-        : "bg-green-600 hover:bg-green-700 active:bg-green-800 text-white hover:shadow-md cursor-pointer"
-    }
-  `}
->
-  <span>
-    {isDisabled ? "Accepting..." : "Accept Order"}
-  </span>
 
-  <span className="text-lg">
-    {isDisabled ? "⏳" : "→"}
-  </span>
-</button>
+              <button
+                disabled={isDisabled}
+                onClick={() => acceptOrder(order._id)}
+                className={`
+                  mt-4 w-full flex items-center justify-center gap-2
+                  font-bold py-3.5 rounded-2xl
+                  shadow-sm transition-all duration-200
+                  ${isDisabled
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed shadow-none"
+                    : "bg-green-600 hover:bg-green-700 active:bg-green-800 text-white hover:shadow-md cursor-pointer"
+                  }
+  `}
+              >
+                <span>
+                  {isDisabled ? "Accepting..." : "Accept Order"}
+                </span>
+
+                <span className="text-lg">
+                  {isDisabled ? "⏳" : "→"}
+                </span>
+              </button>
 
             </div>
           </div>
