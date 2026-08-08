@@ -189,7 +189,7 @@ export default function PassengerCurrentOrder() {
       </div>
 
       {/* Pickup OTP */}
-      {order.status === "driver_assigned" && (
+      {order.status === "driver_arrived" && (
         <div className="mt-6 bg-green-50 border border-green-100 rounded-2xl p-5">
 
           <div className="flex items-center gap-3 mb-4">
