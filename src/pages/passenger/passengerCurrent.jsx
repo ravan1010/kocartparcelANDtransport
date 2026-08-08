@@ -33,8 +33,7 @@ export default function PassengerCurrentOrder() {
         }
       );
 
-      alert(res.data.message);
-      navigate("/pickup/order")
+      navigate("/passenger/pickup/order")
 
 
       fetchOrder(); // refresh status
