@@ -14,7 +14,7 @@ export default function PassengerNearbyOrders() {
 
     try {
       const res = await api.get(`/api/partner/orders/nearby/${serviceType}`);
-      setOrders(res.data.auto_passenger);
+      setOrders(res.data.orders);
     } catch (err) {
       console.log(err);
     } finally {
