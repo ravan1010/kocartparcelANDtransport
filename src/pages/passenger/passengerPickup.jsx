@@ -34,7 +34,7 @@ export default function PassengerPickedUpOrder() {
       );
 
       alert(res.data.message);
-      navigate("/available/order")
+      navigate("/")
 
 
       fetchOrder();
