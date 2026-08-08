@@ -15,9 +15,10 @@
   ],
   "goods_auto": [
     {
-      "name": "Nearby Loads",
+      "name": "order",
       "path": "/goods/available/order"
     },
+
     {
       "name": "Assigned Trip",
       "path": "/goods/current/orderd"
@@ -32,6 +33,10 @@
     {
       "name": "Ride Requests",
       "path": "/passenger/available/order"
+    },
+    {
+      "name": "Assigned",
+      "path": "/passenger/arrive/order"
     },
     {
       "name": "Current Ride",
