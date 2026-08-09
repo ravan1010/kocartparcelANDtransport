@@ -183,18 +183,6 @@ export default function PassengerPickedUpOrder() {
 
         </div>
 
-        <div className="bg-gray-50 rounded-xl border border-gray-100 p-4">
-
-          <p className="text-xs text-gray-400 font-medium">
-            Amount
-          </p>
-
-          <p className="text-lg font-bold text-green-600 mt-1">
-            ₹{order.amount}
-          </p>
-
-        </div>
-
       </div>
 
       {/* Delivery OTP */}
