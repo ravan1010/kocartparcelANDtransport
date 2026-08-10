@@ -49,7 +49,7 @@ export default function GoodsNearbyOrders() {
 
       if (res.data.success) {
         setOneclick(1)
-        navigate("/passenger/arrive/order");
+        navigate("/goods/arrive/order");
       }
     } catch (err) {
       console.log(err);

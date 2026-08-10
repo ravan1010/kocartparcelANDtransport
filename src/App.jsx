@@ -15,6 +15,7 @@ import GoodsNearbyOrders from './pages/goodsAuto/goodsAvailable';
 import GoodsCurrentOrder from './pages/goodsAuto/goodscurrent';
 import GoodsPickedUpOrder from './pages/goodsAuto/goodsPickup';
 import PassengerArrive from './pages/passenger/passengerArrived';
+import GoodsArrive from './pages/goodsAuto/goodsArrived';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 
 
                         <Route path='/goods/available/order' element={<GoodsNearbyOrders />} />
+                        <Route path='/goods/arrive/order' element={<GoodsArrive /> } />
                         <Route path='/goods/current/order' element={<GoodsCurrentOrder />} />
                         <Route path='/goods/pickup/order' element={< GoodsPickedUpOrder />} />
 
