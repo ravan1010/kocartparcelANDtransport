@@ -316,6 +316,82 @@ export default function GoodsArrive() {
 
       </div>
 
+     {/* Goods Details */}
+{order.goods && (
+  <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+    <h3 className="text-lg font-bold text-gray-900 mb-4">
+      Goods Details
+    </h3>
+
+    <div className="space-y-3">
+      {/* Item Type */}
+      <div className="flex justify-between gap-4">
+        <span className="text-gray-500">Item Type</span>
+        <span className="font-semibold text-gray-900 text-right">
+          {order.goods.itemType || "Not specified"}
+        </span>
+      </div>
+
+      {/* Weight */}
+      <div className="flex justify-between gap-4">
+        <span className="text-gray-500">Estimated Weight</span>
+        <span className="font-semibold text-gray-900">
+          {order.goods.estimatedWeight
+            ? `${order.goods.estimatedWeight} kg`
+            : "Not specified"}
+        </span>
+      </div>
+
+      {/* Helpers */}
+      <div className="flex justify-between gap-4">
+        <span className="text-gray-500">Helpers Required</span>
+        <span className="font-semibold text-gray-900">
+          {order.goods.helpersRequired ?? 0}
+        </span>
+      </div>
+
+      {/* Loading */}
+      <div className="flex justify-between gap-4">
+        <span className="text-gray-500">Loading Required</span>
+        <span
+          className={`font-semibold ${
+            order.goods.loadingRequired
+              ? "text-green-600"
+              : "text-gray-500"
+          }`}
+        >
+          {order.goods.loadingRequired ? "Yes" : "No"}
+        </span>
+      </div>
+
+      {/* Unloading */}
+      <div className="flex justify-between gap-4">
+        <span className="text-gray-500">Unloading Required</span>
+        <span
+          className={`font-semibold ${
+            order.goods.unloadingRequired
+              ? "text-green-600"
+              : "text-gray-500"
+          }`}
+        >
+          {order.goods.unloadingRequired ? "Yes" : "No"}
+        </span>
+      </div>
+
+      {/* Instructions */}
+      {order.goods.instructions && (
+        <div className="pt-3 border-t border-gray-100">
+          <p className="text-gray-500 mb-1">Instructions</p>
+          <p className="text-gray-900 font-medium">
+            {order.goods.instructions}
+          </p>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
+
       {/* Driver Actions */}
       {order.status === "driver_assigned" && (
         <div className="mt-7 pt-5 border-t border-gray-100">
