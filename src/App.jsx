@@ -5,9 +5,7 @@ import Verify from './pages/varify';
 import Protected from './auth/authroute';
 import Details from './pages/details';
 import Dashboard from './pages/dashboard';
-import NearbyOrders from './pages/avilableorder';
-import CurrentOrder from './pages/CurrentOrder';
-import PickedUpOrder from './pages/pickeduporder';
+
 import PassengerNearbyOrders from './pages/passenger/passengerAvilable';
 import PassengerCurrentOrder from './pages/passenger/passengerCurrent';
 import PassengerPickedUpOrder from './pages/passenger/passengerPickup';
@@ -29,9 +27,6 @@ function App() {
                     <Route element={<Protected />}>
                         <Route path='/details' element={<Details />} />
                         <Route path='/' element={<Dashboard />} />
-                        <Route path='/available/order' element={<NearbyOrders />} />
-                        <Route path='/current/order' element={< CurrentOrder /> } />
-                        <Route path='/pickup/order' element={ <PickedUpOrder />} />
 
                         <Route path='/passenger/available/order' element={<PassengerNearbyOrders />} />
                         <Route path='/passenger/arrive/order' element={<PassengerArrive />} />
