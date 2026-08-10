@@ -42,7 +42,7 @@ export default function GoodsCurrentOrder() {
     }
   };
 
-  if (!order) {
+  if (!order || order.serviceType !== "goods_auto") {
     return (
       <div className="text-center mt-10">
         No Active Order

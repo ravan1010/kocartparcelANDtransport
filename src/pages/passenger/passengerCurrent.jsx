@@ -42,7 +42,7 @@ export default function PassengerCurrentOrder() {
     }
   };
 
-  if (!order) {
+  if (!order || order.serviceType !== "auto_passenger") {
     return (
       <div className="text-center mt-10">
         No Active Order

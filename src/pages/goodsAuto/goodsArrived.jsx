@@ -117,7 +117,7 @@ export default function GoodsArrive() {
   }
 
 
-  if (!order) {
+  if (!order || order.serviceType !== "goods_auto") {
     return (
       <div className="text-center mt-10">
         No Active Order
@@ -128,6 +128,7 @@ export default function GoodsArrive() {
   return (
     <div className="max-w-xl mx-auto px-4 py-6">
   <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+
 
     {/* Header */}
     <div className="bg-gradient-to-r from-green-600 to-emerald-500 px-6 py-5 text-white">
@@ -196,7 +197,7 @@ export default function GoodsArrive() {
           </div>
 
         </div>
-      </div>
+      </div> 
 
       {/* Route */}
       <div className="mt-6">

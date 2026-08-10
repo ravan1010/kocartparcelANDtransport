@@ -43,7 +43,7 @@ export default function PassengerPickedUpOrder() {
     }
   };
 
-  if (!order) {
+  if (!order || order.serviceType !== "auto_passenger") {
     return (
       <div className="bg-white rounded-xl shadow p-6 text-center">
         <h2 className="text-xl font-semibold">
