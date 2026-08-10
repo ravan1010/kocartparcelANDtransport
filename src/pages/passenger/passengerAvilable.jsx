@@ -88,6 +88,14 @@ export default function PassengerNearbyOrders() {
             key={order._id}
             className="group bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden "
           >
+            {
+              order.serviceType !== "auto_passenger" && (
+                
+              <div className="text-center mt-10">
+                  Not for you
+              </div>           
+              )
+            }
             {/* Header */}
             <div className="px-5 py-4 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
               <div className="flex items-center justify-between gap-3">

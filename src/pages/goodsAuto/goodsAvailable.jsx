@@ -87,7 +87,16 @@ export default function GoodsNearbyOrders() {
             key={order._id}
             className="group bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden "
           >
-            {/* Header */}
+            {
+              order.serviceType !== "goods_auto" && (
+                
+              <div className="text-center mt-10">
+                  Not for you
+              </div>           
+              )
+            } 
+
+           { /* Header */}
             <div className="px-5 py-4 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
               <div className="flex items-center justify-between gap-3">
                 <div className="min-w-0">
