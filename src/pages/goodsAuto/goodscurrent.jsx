@@ -89,7 +89,7 @@ export default function GoodsCurrentOrder() {
             </p>
 
             <h3 className="text-lg font-bold text-gray-900">
-              {order.passenger?.name}
+              {order.pickup?.name}
             </h3>
           </div>
 
@@ -104,22 +104,11 @@ export default function GoodsCurrentOrder() {
             </span>
 
             <a
-              href={`tel:${order.passenger?.phone}`}
+              href={`tel:${order.pickup?.phone}`}
               className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700"
             >
-              📞 {order.passenger?.phone}
+              📞 {order.pickup?.phone}
             </a>
-          </div>
-
-          {/* Passenger Count */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-500">
-              Passengers
-            </span>
-
-            <span className="font-semibold text-gray-800">
-              👥 {order.passenger?.passengers}
-            </span>
           </div>
 
         </div>

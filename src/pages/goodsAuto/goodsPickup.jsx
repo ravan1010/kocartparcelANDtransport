@@ -93,7 +93,7 @@ export default function GoodsPickedUpOrder() {
             </p>
 
             <h3 className="text-lg font-bold text-gray-900">
-              {order.passenger?.name}
+              {order.drop?.name}
             </h3>
           </div>
 
@@ -108,22 +108,11 @@ export default function GoodsPickedUpOrder() {
             </span>
 
             <a
-              href={`tel:${order.passenger?.phone}`}
+              href={`tel:${order.drop?.phone}`}
               className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700"
             >
-              📞 {order.passenger?.phone}
+              📞 {order.drop?.phone}
             </a>
-          </div>
-
-          {/* Passenger Count */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-500">
-              Passengers
-            </span>
-
-            <span className="font-semibold text-gray-800">
-              👥 {order.passenger?.passengers}
-            </span>
           </div>
 
         </div>
