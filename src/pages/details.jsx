@@ -11,7 +11,7 @@ const Details = () => {
 const [phoneNumber, setPhoneNumber] = useState('');
   const [vehicalNO, setvehicalNO] = useState('');
   const [vehicalName, setvehicalName] = useState('');
-  const [serviceType, setserviceType] = useState('bike_parcel');
+  const [serviceType, setserviceType] = useState('');
   const [error, setError] = useState('');
   const [latitude, setlatitude] = useState(null)
   const [longitude, setlongitude] = useState(null)
@@ -150,7 +150,6 @@ onChange={(e) => setPhoneNumber(e.target.value)}
                 onChange={(e) => setserviceType(e.target.value)}
                 className="w-full px-3 py-0 border-1 outline-none overflow-scroll mb-4 h-10"
               >
-                <option value="bike_parcel">bike parcel</option>
                 <option value="goods_auto">goods auto </option>
                 <option value="auto_passenger">auto passenger</option>
                 {/* <option value="FashionANDApparel">Fashion & Apparel</option>
