@@ -160,11 +160,11 @@ export default function GoodsArrive() {
 
           <div>
             <p className="text-xs text-gray-400 uppercase font-semibold">
-              Passenger
+              client
             </p>
 
             <h3 className="font-bold text-gray-900">
-              {order.passenger?.name}
+              {order.pickup?.name}
             </h3>
           </div>
         </div>
@@ -178,23 +178,13 @@ export default function GoodsArrive() {
             </span>
 
             <a
-              href={`tel:${order.passenger?.phone}`}
+              href={`tel:${order.pickup?.phone}`}
               className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700"
             >
-              📞 {order.passenger?.phone}
+              📞 {order.pickup?.phone}
             </a>
           </div>
 
-          {/* Passengers */}
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-500">
-              Passengers
-            </span>
-
-            <span className="font-semibold text-gray-800">
-              👥 {order.passenger?.passengers}
-            </span>
-          </div>
 
         </div>
       </div> 
@@ -318,7 +308,7 @@ export default function GoodsArrive() {
 
      {/* Goods Details */}
 {order.goods && (
-  <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+  <div className="bg-white border border-gray-200 rounded-2xl p-5 mt-4 shadow-sm">
     <h3 className="text-lg font-bold text-gray-900 mb-4">
       Goods Details
     </h3>
