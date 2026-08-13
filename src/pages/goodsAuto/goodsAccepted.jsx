@@ -3,8 +3,8 @@ import api from "../../../api";
 
 export default function AcceptedOrder() {
   const [order, setOrder] = useState(null);
-  const [WaitingForCustomer, setWaitingForCustomer] = (false)
-  const [driverQuote, setDriverQuote] = (null)
+  const [WaitingForCustomer, setWaitingForCustomer] = useState(false)
+  const [driverQuote, setDriverQuote] = useState(null)
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
