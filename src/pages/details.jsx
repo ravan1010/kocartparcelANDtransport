@@ -149,7 +149,8 @@ onChange={(e) => setPhoneNumber(e.target.value)}
                 id='category'
                 onChange={(e) => setserviceType(e.target.value)}
                 className="w-full px-3 py-0 border-1 outline-none overflow-scroll mb-4 h-10"
-              >
+              >                
+                <option value="goods_auto"> select </option>  
                 <option value="goods_auto"> 3 wheel goods auto </option>
                 {/* <option value="auto_passenger">auto passenger</option> */}
                 {/* <option value="FashionANDApparel">Fashion & Apparel</option>
