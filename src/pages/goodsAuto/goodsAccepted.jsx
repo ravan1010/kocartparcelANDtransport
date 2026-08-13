@@ -42,7 +42,7 @@ export default function AcceptedOrder() {
       setSubmitting(true);
 
       const { data } = await api.post(
-        `/api/parcel/${order._id}/submit-amount`,
+        `/api/parter/accepted/order/amount/${order._id}`,
         {
           amount: Number(amount),
         }
