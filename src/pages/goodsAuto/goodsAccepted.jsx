@@ -200,7 +200,7 @@ export default function AcceptedOrder() {
           Trip Details
         </h2>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3">
 
           <div className="bg-gray-50 rounded-xl p-4">
             <p className="text-sm text-gray-500">
