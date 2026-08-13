@@ -6,14 +6,11 @@ import Protected from './auth/authroute';
 import Details from './pages/details';
 import Dashboard from './pages/dashboard';
 
-import PassengerNearbyOrders from './pages/passenger/passengerAvilable';
-import PassengerCurrentOrder from './pages/passenger/passengerCurrent';
-import PassengerPickedUpOrder from './pages/passenger/passengerPickup';
 import GoodsNearbyOrders from './pages/goodsAuto/goodsAvailable';
 import GoodsCurrentOrder from './pages/goodsAuto/goodscurrent';
 import GoodsPickedUpOrder from './pages/goodsAuto/goodsPickup';
-import PassengerArrive from './pages/passenger/passengerArrived';
 import GoodsArrive from './pages/goodsAuto/goodsArrived';
+import AcceptedOrder from './pages/goodsAuto/goodsAccepted';
 
 
 function App() {
@@ -28,18 +25,11 @@ function App() {
                         <Route path='/details' element={<Details />} />
                         <Route path='/' element={<Dashboard />} />
 
-                        <Route path='/passenger/available/order' element={<PassengerNearbyOrders />} />
-                        <Route path='/passenger/arrive/order' element={<PassengerArrive />} />
-                        <Route path='/passenger/current/order' element={<PassengerCurrentOrder />} />
-                        <Route path='/passenger/pickup/order' element={< PassengerPickedUpOrder />} />
-
-
                         <Route path='/goods/available/order' element={<GoodsNearbyOrders />} />
+                        <Route path='/goods/accepted/order' element={<AcceptedOrder />} />
                         <Route path='/goods/arrive/order' element={<GoodsArrive /> } />
                         <Route path='/goods/current/order' element={<GoodsCurrentOrder />} />
                         <Route path='/goods/pickup/order' element={< GoodsPickedUpOrder />} />
-
-
                     </Route>
                 </Routes>    
             </Router>

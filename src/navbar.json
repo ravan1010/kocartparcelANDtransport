@@ -1,8 +1,12 @@
 {
   "goods_auto": [
     {
-      "name": "order",
+      "name": "available ",
       "path": "/goods/available/order"
+    },
+    {
+      "name": "accepted ",
+      "path": "/goods/accepted/order"
     },
     {
       "name": "Assigned",
@@ -10,31 +14,13 @@
     },
 
     {
-      "name": "Assigned Trip",
+      "name": "pickup",
       "path": "/goods/current/orderd"
     },
     {
-      "name": "In pickup",
+      "name": "trip",
       "path": "/goods/pickup/order"
     }
    
-  ],
-  "auto_passenger": [
-    {
-      "name": "Ride Requests",
-      "path": "/passenger/available/order"
-    },
-    {
-      "name": "Assigned",
-      "path": "/passenger/arrive/order"
-    },
-    {
-      "name": "Current Ride",
-      "path": "/passenger/current/order"
-    },
-    {
-      "name": "Trip pickup",
-      "path": "/passenger/pickup/order"
-    }
   ]
 }
