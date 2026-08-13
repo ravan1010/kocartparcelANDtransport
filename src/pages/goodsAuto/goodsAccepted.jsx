@@ -3,7 +3,7 @@ import api from "../../../api";
 
 export default function AcceptedOrder() {
   const [order, setOrder] = useState(null);
-  const [WaitingForCustomer, setWaitingForCustomer] =(null)
+  const [WaitingForCustomer, setWaitingForCustomer] = (null)
   const [driverQuote, setDriverQuote] = (null)
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(true);
@@ -17,15 +17,15 @@ export default function AcceptedOrder() {
       );
 
       if (res.data.type === "confirm") {
-  // Show waiting/loading screen3
-  setWaitingForCustomer(true);
-  setOrder(res.data.order);
-  setDriverQuote(res.data.driverQuote);
-} else {
-  // Show normal accepted-order page
-  setWaitingForCustomer(false);
-  setOrder(res.data.order);
-}
+        // Show waiting/loading screen3
+        setWaitingForCustomer(true);
+        setOrder(res.data.order);
+        setDriverQuote(res.data.driverQuote);
+      } else {
+        // Show normal accepted-order page
+        setWaitingForCustomer(false);
+        setOrder(res.data.order);
+      }
 
     } catch (err) {
       console.error(err);
@@ -79,136 +79,136 @@ export default function AcceptedOrder() {
     );
   }
 
-  if(WaitingForCustomer){
-    return(
+  if (WaitingForCustomer) {
+    return (
 
-<div className="min-h-[70vh] flex items-center justify-center p-4">
-  <div className="w-full max-w-md">
+      <div className="min-h-[70vh] flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
 
-    <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+          <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
 
-      {/* Top loading section */}
-      <div className="px-6 pt-8 pb-6 text-center">
+            {/* Top loading section */}
+            <div className="px-6 pt-8 pb-6 text-center">
 
-        {/* Animated loader */}
-        <div className="relative w-20 h-20 mx-auto mb-5">
+              {/* Animated loader */}
+              <div className="relative w-20 h-20 mx-auto mb-5">
 
-          <div className="absolute inset-0 rounded-full border-4 border-gray-200" />
+                <div className="absolute inset-0 rounded-full border-4 border-gray-200" />
 
-          <div className="absolute inset-0 rounded-full border-4 border-green-500 border-t-transparent animate-spin" />
+                <div className="absolute inset-0 rounded-full border-4 border-green-500 border-t-transparent animate-spin" />
 
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl">₹</span>
-          </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-2xl">₹</span>
+                </div>
 
-        </div>
+              </div>
 
-        <h2 className="text-2xl font-bold text-gray-900">
-          Amount Submitted
-        </h2>
+              <h2 className="text-2xl font-bold text-gray-900">
+                Amount Submitted
+              </h2>
 
-        <p className="text-gray-500 mt-2 text-sm leading-5">
-          Waiting for the customer to choose a driver
-        </p>
-
-      </div>
-
-
-      {/* Amount */}
-      <div className="px-5">
-
-        <div className="bg-gray-50 rounded-2xl p-5 text-center">
-
-          <p className="text-sm text-gray-500">
-            Your Amount
-          </p>
-
-          <p className="text-3xl font-extrabold text-gray-900 mt-1">
-            ₹{driverQuote?.amount}
-          </p>
-
-        </div>
-
-      </div>
-
-
-      {/* Trip information */}
-      <div className="p-5 grid grid-cols-2 gap-3">
-
-        <div className="bg-blue-50 rounded-2xl p-4">
-
-          <p className="text-xs text-gray-500">
-            Pickup Distance
-          </p>
-
-          <p className="text-xl font-bold text-gray-900 mt-1">
-            {driverQuote?.distanceKm} km
-          </p>
-
-        </div>
-
-
-        <div className="bg-green-50 rounded-2xl p-4">
-
-          <p className="text-xs text-gray-500">
-            ETA
-          </p>
-
-          <p className="text-xl font-bold text-gray-900 mt-1">
-            {driverQuote?.etaMinutes} min
-          </p>
-
-        </div>
-
-      </div>
-
-
-      {/* Status */}
-      <div className="px-5 pb-5">
-
-        <div className="border border-yellow-200 bg-yellow-50 rounded-2xl p-4">
-
-          <div className="flex items-start gap-3">
-
-            <div className="w-9 h-9 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
-              <span className="animate-pulse">
-                ⏳
-              </span>
-            </div>
-
-            <div>
-
-              <p className="font-semibold text-yellow-800">
-                Waiting for customer
-              </p>
-
-              <p className="text-sm text-yellow-700 mt-1">
-                Your price has been sent to the customer.
-                Please wait while they compare driver offers.
+              <p className="text-gray-500 mt-2 text-sm leading-5">
+                Waiting for the customer to choose a driver
               </p>
 
             </div>
 
+
+            {/* Amount */}
+            <div className="px-5">
+
+              <div className="bg-gray-50 rounded-2xl p-5 text-center">
+
+                <p className="text-sm text-gray-500">
+                  Your Amount
+                </p>
+
+                <p className="text-3xl font-extrabold text-gray-900 mt-1">
+                  ₹{driverQuote?.amount}
+                </p>
+
+              </div>
+
+            </div>
+
+
+            {/* Trip information */}
+            <div className="p-5 grid grid-cols-2 gap-3">
+
+              <div className="bg-blue-50 rounded-2xl p-4">
+
+                <p className="text-xs text-gray-500">
+                  Pickup Distance
+                </p>
+
+                <p className="text-xl font-bold text-gray-900 mt-1">
+                  {driverQuote?.distanceKm} km
+                </p>
+
+              </div>
+
+
+              <div className="bg-green-50 rounded-2xl p-4">
+
+                <p className="text-xs text-gray-500">
+                  ETA
+                </p>
+
+                <p className="text-xl font-bold text-gray-900 mt-1">
+                  {driverQuote?.etaMinutes} min
+                </p>
+
+              </div>
+
+            </div>
+
+
+            {/* Status */}
+            <div className="px-5 pb-5">
+
+              <div className="border border-yellow-200 bg-yellow-50 rounded-2xl p-4">
+
+                <div className="flex items-start gap-3">
+
+                  <div className="w-9 h-9 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+                    <span className="animate-pulse">
+                      ⏳
+                    </span>
+                  </div>
+
+                  <div>
+
+                    <p className="font-semibold text-yellow-800">
+                      Waiting for customer
+                    </p>
+
+                    <p className="text-sm text-yellow-700 mt-1">
+                      Your price has been sent to the customer.
+                      Please wait while they compare driver offers.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* Bottom */}
+            <div className="border-t bg-gray-50 px-5 py-4 text-center">
+
+              <p className="text-xs text-gray-500">
+                You will be notified when the customer selects a driver.
+              </p>
+
+            </div>
+
           </div>
 
         </div>
-
       </div>
-
-
-      {/* Bottom */}
-      <div className="border-t bg-gray-50 px-5 py-4 text-center">
-
-        <p className="text-xs text-gray-500">
-          You will be notified when the customer selects a driver.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-</div>
     )
   }
 
