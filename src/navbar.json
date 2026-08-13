@@ -12,7 +12,6 @@
       "name": "Assigned",
       "path": "/goods/arrive/order"
     },
-
     {
       "name": "pickup",
       "path": "/goods/current/orderd"
@@ -21,6 +20,27 @@
       "name": "trip",
       "path": "/goods/pickup/order"
     }
-   
+  ],
+  "4_wheel_auto": [
+    {
+      "name": "available ",
+      "path": "/goods/available/order"
+    },
+    {
+      "name": "accepted ",
+      "path": "/goods/accepted/order"
+    },
+    {
+      "name": "Assigned",
+      "path": "/goods/arrive/order"
+    },
+    {
+      "name": "pickup",
+      "path": "/goods/current/orderd"
+    },
+    {
+      "name": "trip",
+      "path": "/goods/pickup/order"
+    }
   ]
 }
