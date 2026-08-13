@@ -15,7 +15,7 @@ export default function AcceptedOrder() {
       );
 
       if (data.success && data.order) {
-        setOrder(data.order);
+        setOrder(data.orders);
       } else {
         setOrder(null);
       }
