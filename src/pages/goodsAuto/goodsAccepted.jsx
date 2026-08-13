@@ -212,16 +212,6 @@ export default function AcceptedOrder() {
             </p>
           </div>
 
-          <div className="bg-gray-50 rounded-xl p-4">
-            <p className="text-sm text-gray-500">
-              Your distance to pickup
-            </p>
-
-            <p className="text-xl font-bold mt-1">
-              {order.driverDistanceKm ?? "--"} km
-            </p>
-          </div>
-
         </div>
 
         {order.driverEtaMinutes && (
