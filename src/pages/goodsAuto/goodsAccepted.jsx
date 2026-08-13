@@ -211,9 +211,7 @@ export default function AcceptedOrder() {
               {order.distance || order.pricing?.distance || 0} km
             </p>
           </div>
-
         </div>
-
       </div>
 
 
