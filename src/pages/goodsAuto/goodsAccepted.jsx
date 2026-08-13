@@ -214,18 +214,6 @@ export default function AcceptedOrder() {
 
         </div>
 
-        {order.driverEtaMinutes && (
-          <div className="mt-3 bg-blue-50 rounded-xl p-4">
-            <p className="text-sm text-gray-500">
-              Estimated arrival
-            </p>
-
-            <p className="text-lg font-bold text-blue-700">
-              {order.driverEtaMinutes} minutes
-            </p>
-          </div>
-        )}
-
       </div>
 
 
