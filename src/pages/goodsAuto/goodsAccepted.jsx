@@ -10,11 +10,11 @@ export default function AcceptedOrder() {
 
   const fetchAcceptedOrder = async () => {
     try {
-      const { data } = await api.get(
+      const res  = await api.get(
         "/api/parter/accepted/order"
       );
 
-      if (data.success && data.order) {
+      if (res.data.success) {
         setOrder(data.orders);
         console.log(data.orders);
         console.log(data.data.orders);
