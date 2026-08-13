@@ -15,8 +15,8 @@ export default function AcceptedOrder() {
       );
 
       if (res.data.success) {
-        setOrder(res.data.orders);
-        console.log(res.data.orders);
+        setOrder(res.data.order);
+        console.log(res.data.order);
       } else {
         setOrder(null);
       }
