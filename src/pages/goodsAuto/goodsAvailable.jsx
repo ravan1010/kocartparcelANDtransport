@@ -51,7 +51,7 @@ export default function GoodsNearbyOrders() {
         setOneclick(1)
         navigate("/goods/accepted/order");
       }
-    } catch (err) {
+    } catch (err) {3
       console.log(err);
     }
   };

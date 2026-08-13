@@ -10,7 +10,7 @@ export default function AcceptedOrder() {
 
   const fetchAcceptedOrder = async () => {
     try {
-      const res  = await api.get(
+      const res = await api.get(
         "/api/parter/accepted/order"
       );
 
@@ -142,17 +142,14 @@ export default function AcceptedOrder() {
               {pickup?.address}
             </p>
 
-            {pickup?.name && (
-              <p className="text-sm mt-2">
-                {pickup.name}
-              </p>
-            )}
-
-            {pickup?.phone && (
-              <p className="text-sm text-gray-500">
-                {pickup.phone}
-              </p>
-            )}
+            <a
+              href={`https://www.google.com/maps?q=${order.pickup.location.coordinates[1]},${order.pickup.location.coordinates[0]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-700"
+            >
+              Navigate →
+            </a>
           </div>
 
         </div>
@@ -180,18 +177,14 @@ export default function AcceptedOrder() {
             <p className="text-gray-600 text-sm mt-1">
               {drop?.address}
             </p>
-
-            {drop?.name && (
-              <p className="text-sm mt-2">
-                {drop.name}
-              </p>
-            )}
-
-            {drop?.phone && (
-              <p className="text-sm text-gray-500">
-                {drop.phone}
-              </p>
-            )}
+            <a
+              href={`https://www.google.com/maps?q=${order.drop.location.coordinates[1]},${order.drop.location.coordinates[0]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-700"
+            >
+              Navigate →
+            </a>
           </div>
 
         </div>
@@ -336,71 +329,71 @@ export default function AcceptedOrder() {
       {order.serviceType === "bike_parcel" &&
         order.parcel && (
 
-        <div className="bg-white rounded-2xl shadow p-5">
+          <div className="bg-white rounded-2xl shadow p-5">
 
-          <h2 className="font-bold text-lg mb-4">
-            Parcel Details
-          </h2>
+            <h2 className="font-bold text-lg mb-4">
+              Parcel Details
+            </h2>
 
-          <div className="space-y-3">
+            <div className="space-y-3">
 
-            <div className="flex justify-between">
-              <span className="text-gray-500">
-                Item
-              </span>
+              <div className="flex justify-between">
+                <span className="text-gray-500">
+                  Item
+                </span>
 
-              <span className="font-semibold">
-                {order.parcel.itemName}
-              </span>
-            </div>
-
-            <div className="flex justify-between">
-              <span className="text-gray-500">
-                Category
-              </span>
-
-              <span className="font-semibold">
-                {order.parcel.category}
-              </span>
-            </div>
-
-            <div className="flex justify-between">
-              <span className="text-gray-500">
-                Weight
-              </span>
-
-              <span className="font-semibold">
-                {order.parcel.weight} kg
-              </span>
-            </div>
-
-            <div className="flex justify-between">
-              <span className="text-gray-500">
-                Quantity
-              </span>
-
-              <span className="font-semibold">
-                {order.parcel.quantity}
-              </span>
-            </div>
-
-            {order.parcel.instructions && (
-              <div className="pt-3 border-t">
-                <p className="text-sm text-gray-500">
-                  Instructions
-                </p>
-
-                <p className="mt-1">
-                  {order.parcel.instructions}
-                </p>
+                <span className="font-semibold">
+                  {order.parcel.itemName}
+                </span>
               </div>
-            )}
+
+              <div className="flex justify-between">
+                <span className="text-gray-500">
+                  Category
+                </span>
+
+                <span className="font-semibold">
+                  {order.parcel.category}
+                </span>
+              </div>
+
+              <div className="flex justify-between">
+                <span className="text-gray-500">
+                  Weight
+                </span>
+
+                <span className="font-semibold">
+                  {order.parcel.weight} kg
+                </span>
+              </div>
+
+              <div className="flex justify-between">
+                <span className="text-gray-500">
+                  Quantity
+                </span>
+
+                <span className="font-semibold">
+                  {order.parcel.quantity}
+                </span>
+              </div>
+
+              {order.parcel.instructions && (
+                <div className="pt-3 border-t">
+                  <p className="text-sm text-gray-500">
+                    Instructions
+                  </p>
+
+                  <p className="mt-1">
+                    {order.parcel.instructions}
+                  </p>
+                </div>
+              )}
+
+            </div>
 
           </div>
 
-        </div>
-
-      )}
+        )}
 
 
       {/* Amount */}
