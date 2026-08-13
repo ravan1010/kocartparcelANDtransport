@@ -16,7 +16,7 @@ export default function AcceptedOrder() {
 
       if (data.success && data.order) {
         setOrder(data.orders);
-        console.log(data.order)
+        console.log(data.orders)
       } else {
         setOrder(null);
       }
