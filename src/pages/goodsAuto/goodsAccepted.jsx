@@ -58,6 +58,7 @@ export default function AcceptedOrder() {
       if (data.success) {
         setOrder(data.order);
         alert("Amount submitted successfully");
+        fetchAcceptedOrder();
       }
 
     } catch (err) {
