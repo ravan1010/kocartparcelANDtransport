@@ -310,42 +310,43 @@ useEffect(() => {
             <p className="text-xs text-gray-500 text-center mb-4">
               You will be notified when the customer selects a driver.
             </p>
+{/* Cancel */}
+  <button
+    type="button"
+    onClick={Reassign}
+    disabled={submitting || loading}
+    className="
+      w-full
+      h-14
+      flex
+      items-center
+      justify-center
+      gap-2
+      rounded-2xl
+      bg-red-50
+      text-red-600
+      border-2
+      border-red-200
+      hover:bg-red-100
+      hover:border-red-300
+      active:scale-[0.98]
+      disabled:opacity-50
+      disabled:cursor-not-allowed
+      font-bold
+      text-base
+      transition-all
+      duration-200
+    "
+  >
+    <span className="text-lg">
+      ✕
+    </span>
 
-            {/* Cancel Button */}
-            <button
-              onClick={Reassign}
-              className="
-                w-full
-                flex
-                items-center
-                justify-center
-                gap-2
-                py-3.5
-                rounded-xl
-                bg-white
-                text-red-600
-                border
-                border-red-200
-                font-bold
-                shadow-sm
-                hover:bg-red-50
-                hover:border-red-300
-                active:scale-[0.98]
-                transition-all
-                duration-200
-              "
-            >
-              <span className="text-lg">
-                ✕
-              </span>
+    <span>
+      Cancel Order
+    </span>
+  </button>
 
-              <span>
-                Cancel
-              </span>
-            </button>
-            <button>
-              raa
-            </button>
 
           </div>
 
@@ -583,45 +584,6 @@ useEffect(() => {
 
       )}
 
- <button
-    type="button"
-    onClick={Reassign}
-    disabled={submitting || loading}
-    className="
-      w-full
-      h-14
-      flex
-      items-center
-      justify-center
-      gap-2
-      rounded-2xl
-      bg-red-50
-      text-red-600
-      border-2
-      border-red-200
-      hover:bg-red-100
-      hover:border-red-300
-      active:scale-[0.98]
-      disabled:opacity-50
-      disabled:cursor-not-allowed
-      font-bold
-      text-base
-      transition-all
-      duration-200
-    "
-  >
-    <span className="text-lg">
-      ✕
-    </span>
-
-    <span>
-      Cancel Order
-    </span>
-  </button>
-
-<button>
-  raaaa
-</button>
       {/* Amount */}
 
       <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-6">
