@@ -252,17 +252,10 @@ export default function GoodsPickedUpOrder() {
                 {order.distance} km
               </p>
 
-              <p className="text-xs text-green-400 font-medium">
-                Amount
-              </p>
-
-              <p className="text-lg font-bold text-green-900 mt-1">
-                ₹{order.amount}
-              </p>
             </div>
             <div className="bg-gray-50 rounded-xl border border-gray-100 p-4">
 
-              <p className="text-xs text-green-200 font-medium">
+              <p className="text-xs text-gray-400 font-medium">
                 Amount
               </p>
 
