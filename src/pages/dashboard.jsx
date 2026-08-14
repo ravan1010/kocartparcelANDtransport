@@ -4,8 +4,11 @@ import api from '../../api.js';
 import { ToggleRight, ToggleLeft } from 'lucide-react';
 import { generateAndSaveFCMToken } from '../utili/token.js';
 import PartnerNavbar from './navbar.jsx';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
+
+  const { t } = useTranslation();
 
   const [kocartAmount, setkocartAmount] = useState(0);
   const [isOnline, setisOnline] = useState(false);
@@ -14,6 +17,7 @@ const Dashboard = () => {
   const [step, setstep] = useState(1);
 
   const fetchDashboard = async () => {
+
     try {
       const res = await api.get('/api/parcel/dashboard')
       console.log(res.data.isOnline, 'dashboard')
@@ -103,7 +107,7 @@ const Dashboard = () => {
 
             <div>
               <h2 className="text-xl font-bold text-gray-800">
-                Partner
+                        {t("partner")}
               </h2>
 
               <p

@@ -1,0 +1,24 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "navigate": "Navigate",
+    "partner": "delivery partner"
+  },
+  "order": {
+    "order": "Order",
+    "pickupLocation": "Pickup Location",
+    "dropLocation": "Drop Location",
+    "tripDetails": "Trip Details",
+    "amountSubmitted": "Amount Submitted",
+    "waitingForCustomer": "Waiting for customer",
+    "yourAmount": "Your Amount",
+    "enterYourAmount": "Enter Your Amount",
+    "enterAmount": "Enter amount",
+    "submitAmount": "Submit Amount",
+    "submitting": "Submitting..."
+  }
+}

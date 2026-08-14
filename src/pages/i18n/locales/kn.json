@@ -1,0 +1,24 @@
+{
+  "common": {
+    "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    "submit": "ಸಲ್ಲಿಸಿ",
+    "cancel": "ರದ್ದುಮಾಡಿ",
+    "yes": "ಹೌದು",
+    "no": "ಇಲ್ಲ",
+    "navigate": "ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ",
+    "partner": "ವಿತರಣಾ ಪಾಲುದಾರ"
+  },
+  "order": {
+    "order": "ಆರ್ಡರ್",
+    "pickupLocation": "ಪಿಕಪ್ ಸ್ಥಳ",
+    "dropLocation": "ಡ್ರಾಪ್ ಸ್ಥಳ",
+    "tripDetails": "ಪ್ರಯಾಣದ ವಿವರಗಳು",
+    "amountSubmitted": "ಮೊತ್ತವನ್ನು ಸಲ್ಲಿಸಲಾಗಿದೆ",
+    "waitingForCustomer": "ಗ್ರಾಹಕರಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ",
+    "yourAmount": "ನಿಮ್ಮ ಮೊತ್ತ",
+    "enterYourAmount": "ನಿಮ್ಮ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ",
+    "enterAmount": "ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ",
+    "submitAmount": "ಮೊತ್ತವನ್ನು ಸಲ್ಲಿಸಿ",
+    "submitting": "ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ..."
+  }
+}
