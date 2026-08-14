@@ -56,6 +56,15 @@ export default function AcceptedOrder() {
       return;
     }
 
+    // Another driver selected
+    if (
+      currentOrder?.status === "cancelled" &&
+      String(currentOrder.driver) !== String(currentDriverId)
+    ) {
+      navigate("/goods/available/order", { replace: true });
+      return;
+    }
+
   } catch (err) {
     console.error("Fetch accepted order error:", err);
     setError("Unable to load order");
