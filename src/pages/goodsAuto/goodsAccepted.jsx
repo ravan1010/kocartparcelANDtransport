@@ -698,7 +698,6 @@ useEffect(() => {
     {/* Cancel */}
     <button
       onClick={Reassign}
-      disabled={submitting}
       className="
         w-full
         h-14
