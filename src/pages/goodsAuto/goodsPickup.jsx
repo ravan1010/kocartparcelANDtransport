@@ -260,6 +260,16 @@ export default function GoodsPickedUpOrder() {
                 ₹{order.amount}
               </p>
             </div>
+            <div className="bg-gray-50 rounded-xl border border-gray-100 p-4">
+
+              <p className="text-xs text-green-200 font-medium">
+                Amount
+              </p>
+
+              <p className="text-lg font-bold text-green-500 mt-1">
+                ₹{order.amount}
+              </p>
+            </div>
 
           </div>
 
