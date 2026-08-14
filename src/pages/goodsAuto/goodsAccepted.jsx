@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function AcceptedOrder() {
 
-      const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+
   const [order, setOrder] = useState(null);
   const [WaitingForCustomer, setWaitingForCustomer] = useState(false)
   const [driverQuote, setDriverQuote] = useState(null)
@@ -17,49 +17,68 @@ export default function AcceptedOrder() {
 
 
   const fetchAcceptedOrder = async () => {
-    try {
-      const res = await api.get(
-        "/api/parter/accepted/order"
-      );
+  try {
+    const res = await api.get("/api/parter/accepted/order");
 
-      if (res.data.type === "confirm") {
-        // Show waiting/loading screen3
-        setWaitingForCustomer(true);
-        setOrder(res.data.order);
-        setdriverId(res.data.driverId)
-        setDriverQuote(res.data.driverQuote);
-      } else {
-        // Show normal accepted-order page
-        setWaitingForCustomer(false);
-        setdriverId(res.data.driverId)
-        setOrder(res.data.order);
-      }
+    const data = res.data;
 
-    } catch (err) {
-      console.error(err);
-      setError("Unable to load order");
-    } finally {
-      setLoading(false);
+    // IMPORTANT:
+    // Use fresh API response values, not old React state
+    const currentOrder = data.order;
+    const currentDriverId = data.driverId;
+
+    setOrder(currentOrder);
+    setdriverId(currentDriverId);
+
+    if (data.type === "confirm") {
+      setWaitingForCustomer(true);
+      setDriverQuote(data.driverQuote);
+      return;
     }
-  };
 
-  useEffect(() => {
+    setWaitingForCustomer(false);
+
+    // Driver selected
+    if (
+      currentOrder?.status === "driver_assigned" &&
+      String(currentOrder.driver) === String(currentDriverId)
+    ) {
+      navigate("/goods/arrive/order", { replace: true });
+      return;
+    }
+
+    // Another driver selected
+    if (
+      currentOrder?.status === "driver_assigned" &&
+      String(currentOrder.driver) !== String(currentDriverId)
+    ) {
+      navigate("/goods/available/order", { replace: true });
+      return;
+    }
+
+  } catch (err) {
+    console.error("Fetch accepted order error:", err);
+    setError("Unable to load order");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+useEffect(() => {
+  // First request immediately
+  fetchAcceptedOrder();
+
+  // Then check every 5 seconds
+  const interval = setInterval(() => {
     fetchAcceptedOrder();
-  }, []);
+  }, 5000);
 
-  if (
-  order.status === "driver_assigned" &&
-  order.driver === driverId
-) {
-  navigate("/goods/arrive/order");
-}
+  return () => {
+    clearInterval(interval);
+  };
+}, []);
 
-if (
-  order.status === "driver_assigned" &&
-  order.driver !== driverId
-) {
-  navigate("/goods/available/order");
-}
 
   const submitAmount = async () => {
     if (!amount || Number(amount) <= 0) {
