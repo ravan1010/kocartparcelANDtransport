@@ -648,103 +648,98 @@ useEffect(() => {
 
 
   {/* Actions */}
-  <div className="mt-5 grid grid-cols-1 gap-3">
+  {/* Actions */}
+<div className="mt-6 space-y-3">
 
-    {/* Submit */}
-    <button
-      onClick={submitAmount}
-      disabled={submitting || !amount}
-      className="
-        w-full
-        h-14
-        flex
-        items-center
-        justify-center
-        gap-2
-        rounded-2xl
-        bg-green-600
-        hover:bg-green-700
-        active:scale-[0.98]
-        disabled:bg-gray-300
-        disabled:text-gray-500
-        disabled:cursor-not-allowed
-        text-white
-        font-bold
-        text-base
-        shadow-md
-        shadow-green-100
-        transition-all
-        duration-200
-      "
-    >
-      {submitting ? (
-        <>
-          <span
-            className="
-              w-5
-              h-5
-              border-2
-              border-white/40
-              border-t-white
-              rounded-full
-              animate-spin
-            "
-          />
+  {/* Submit Amount */}
+  <button
+    type="button"
+    onClick={submitAmount}
+    disabled={submitting || !amount}
+    className="
+      w-full
+      h-14
+      flex
+      items-center
+      justify-center
+      gap-2
+      rounded-2xl
+      bg-green-600
+      hover:bg-green-700
+      active:scale-[0.98]
+      disabled:bg-gray-300
+      disabled:text-gray-500
+      disabled:cursor-not-allowed
+      text-white
+      font-bold
+      text-base
+      shadow-md
+      transition-all
+      duration-200
+    "
+  >
+    {submitting ? (
+      <>
+        <span
+          className="
+            w-5 h-5
+            border-2
+            border-white/40
+            border-t-white
+            rounded-full
+            animate-spin
+          "
+        />
 
-          <span>
-            Submitting...
-          </span>
-        </>
-      ) : (
-        <>
-          <span className="text-lg">
-            ✓
-          </span>
-
-          <span>
-            Submit Amount
-          </span>
-        </>
-      )}
-    </button>
+        <span>Submitting...</span>
+      </>
+    ) : (
+      <>
+        <span className="text-lg">✓</span>
+        <span>Submit Amount</span>
+      </>
+    )}
+  </button>
 
 
-    {/* Cancel */}
-    <button
-      onClick={Reassign}
-      className="
-        w-full
-        h-14
-        flex
-        items-center
-        justify-center
-        gap-2
-        rounded-2xl
-        bg-red-50
-        text-red-600
-        border
-        border-red-100
-        hover:bg-red-100
-        hover:border-red-200
-        active:scale-[0.98]
-        disabled:opacity-50
-        disabled:cursor-not-allowed
-        font-bold
-        text-base
-        transition-all
-        duration-200
-      "
-    >
-      <span className="text-lg">
-        ✕
-      </span>
+  {/* Cancel */}
+  <button
+    type="button"
+    onClick={Reassign}
+    disabled={submitting || loading}
+    className="
+      w-full
+      h-14
+      flex
+      items-center
+      justify-center
+      gap-2
+      rounded-2xl
+      bg-red-50
+      text-red-600
+      border-2
+      border-red-200
+      hover:bg-red-100
+      hover:border-red-300
+      active:scale-[0.98]
+      disabled:opacity-50
+      disabled:cursor-not-allowed
+      font-bold
+      text-base
+      transition-all
+      duration-200
+    "
+  >
+    <span className="text-lg">
+      ✕
+    </span>
 
-      <span>
-        Cancel
-      </span>
-    </button>
+    <span>
+      Cancel Order
+    </span>
+  </button>
 
-  </div>
+</div>
 
 </div>
 
