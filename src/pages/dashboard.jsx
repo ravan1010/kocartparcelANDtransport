@@ -119,7 +119,7 @@ const Dashboard = () => {
                   }`}
               >
                 {isOnline
-    ? t("dashboard.online")
+    ? t("dashboard.onlineReady")
     : t("dashboard.offline")}
               </p>
             </div>
