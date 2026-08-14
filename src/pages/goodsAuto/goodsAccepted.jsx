@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import api from "../../../api";
+import { useNavigate } from "react-router-dom";
 
 export default function AcceptedOrder() {
+
+      const navigate = useNavigate();
+  
   const [order, setOrder] = useState(null);
   const [WaitingForCustomer, setWaitingForCustomer] = useState(false)
   const [driverQuote, setDriverQuote] = useState(null)
+  const [driverId, setdriverId] = useState(null)
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+
 
   const fetchAcceptedOrder = async () => {
     try {
@@ -20,10 +26,12 @@ export default function AcceptedOrder() {
         // Show waiting/loading screen3
         setWaitingForCustomer(true);
         setOrder(res.data.order);
+        setdriverId(res.data.driverId)
         setDriverQuote(res.data.driverQuote);
       } else {
         // Show normal accepted-order page
         setWaitingForCustomer(false);
+        setdriverId(res.data.driverId)
         setOrder(res.data.order);
       }
 
@@ -38,6 +46,20 @@ export default function AcceptedOrder() {
   useEffect(() => {
     fetchAcceptedOrder();
   }, []);
+
+  if (
+  order.status === "driver_assigned" &&
+  order.driver === driverId
+) {
+  navigate("/goods/arrive/order");
+}
+
+if (
+  order.status === "driver_assigned" &&
+  order.driver !== driverId
+) {
+  navigate("/goods/available/order");
+}
 
   const submitAmount = async () => {
     if (!amount || Number(amount) <= 0) {

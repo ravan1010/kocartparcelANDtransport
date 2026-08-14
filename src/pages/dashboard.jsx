@@ -118,7 +118,7 @@ const Dashboard = () => {
 
           </div>
 
-          {serviceType === "bike_parcel" && (
+          
             <>
               {/* Center - Dashboard Cards */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1">
@@ -135,9 +135,7 @@ const Dashboard = () => {
                 </div>
 
               </div>
-            </>)
-
-          }
+            </>
 
           {/* Right - Toggle */}
           <div className="flex flex-col items-center gap-2">
