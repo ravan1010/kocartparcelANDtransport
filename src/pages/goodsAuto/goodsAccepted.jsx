@@ -88,6 +88,7 @@ useEffect(() => {
 
     try {
       setSubmitting(true);
+      setLoading(true)
 
       const { data } = await api.post(
         `/api/parter/accepted/order/amount/${order._id}`,
@@ -100,6 +101,7 @@ useEffect(() => {
         setOrder(data.order);
         alert("Amount submitted successfully");
         fetchAcceptedOrder();
+        setLoading(false)
       }
 
     } catch (err) {
@@ -123,7 +125,7 @@ useEffect(() => {
       navigate("/goods/available/order")
       }
 
-      fetchOrder(); // refresh status
+      fetchAcceptedOrder(); // refresh status
     } catch (err) {
       alert(err.response?.data?.message );
     }
