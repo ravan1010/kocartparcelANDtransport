@@ -101,7 +101,6 @@ useEffect(() => {
         setOrder(data.order);
         alert("Amount submitted successfully");
         fetchAcceptedOrder();
-        setLoading(false)
       }
 
     } catch (err) {
@@ -112,12 +111,13 @@ useEffect(() => {
       );
     } finally {
       setSubmitting(false);
+      setLoading(false)
     }
   };
 
   const Reassign = async () => {
   try {
-    if (!order?._id) return;
+    // if (!order?._id) return;
 
     setLoading(true);
 
