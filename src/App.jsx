@@ -11,7 +11,6 @@ import GoodsCurrentOrder from './pages/goodsAuto/goodscurrent';
 import GoodsPickedUpOrder from './pages/goodsAuto/goodsPickup';
 import GoodsArrive from './pages/goodsAuto/goodsArrived';
 import AcceptedOrder from './pages/goodsAuto/goodsAccepted';
-import LanguageSelector from './pages/LanguageSelector';
 
 
 function App() {
