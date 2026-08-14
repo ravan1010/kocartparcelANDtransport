@@ -25,7 +25,6 @@ function App() {
                     <Route element={<Protected />}>
                         <Route path='/details' element={<Details />} />
                         <Route path='/' element={<Dashboard />} />
-                        <Route path='/Language' element={<LanguageSelector />} />
 
                         <Route path='/goods/available/order' element={<GoodsNearbyOrders />} />
                         <Route path='/goods/accepted/order' element={<AcceptedOrder />} />

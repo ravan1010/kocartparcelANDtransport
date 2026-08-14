@@ -68,16 +68,12 @@ const Dashboard = () => {
           className="absolute inset-0 bg-black opacity-60"
         ></div>
         {/* Popup Content */}
-        <div className="bg-white rounded-2xl shadow-lg text-center z-10 w-96 p-6">
+         <div className="bg-white rounded-2xl shadow-lg text-center z-10 w-96 p-6">
           <h1 className="text-red-500 mb-5">
-            {t("dashboard.activateAccount")}
+            ACTIVATE YOUR ACCOUNT
           </h1>
-
           <p>
-            {t("dashboard.contactToActivate", {
-              phone1: "7349343243",
-              phone2: "8088303214"
-            })}
+            contact (7349343243) or (8088303214) <br /> to active
           </p>
 
         </div>
@@ -111,7 +107,7 @@ const Dashboard = () => {
 
             <div>
               <h2 className="text-xl font-bold text-gray-800">
-                {t("dashboard.partner")}
+                partner
               </h2>
 
               <p
@@ -119,8 +115,8 @@ const Dashboard = () => {
                   }`}
               >
                 {isOnline
-    ? t("dashboard.onlineReady")
-    : t("dashboard.offline")}
+  ? "🟢 Online - Ready for Orders"
+  : "🔴 Offline"}
               </p>
             </div>
 
