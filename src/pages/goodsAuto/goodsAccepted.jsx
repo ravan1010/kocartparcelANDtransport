@@ -113,6 +113,22 @@ useEffect(() => {
     }
   };
 
+  const Reassign = async () => {
+    try {
+      const res = await api.put(
+        `/api/partner/orders/Reassign/${order._id}`,{}
+      );
+
+      if(res.data.success){
+      navigate("/goods/available/order")
+      }
+
+      fetchOrder(); // refresh status
+    } catch (err) {
+      alert(err.response?.data?.message );
+    }
+  }
+
   if (loading) {
     return (
       <div className="p-6 text-center">
@@ -122,137 +138,207 @@ useEffect(() => {
   }
 
   if (WaitingForCustomer) {
-    return (
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
 
-      <div className="min-h-[70vh] flex items-center justify-center p-4">
-        <div className="w-full max-w-md">
+      <div className="w-full max-w-md">
 
-          <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-[28px] shadow-xl border border-gray-100 overflow-hidden">
 
-            {/* Top loading section */}
-            <div className="px-6 pt-8 pb-6 text-center">
+          {/* Header / Loader */}
+          <div className="px-6 pt-9 pb-7 text-center">
 
-              {/* Animated loader */}
-              <div className="relative w-20 h-20 mx-auto mb-5">
+            {/* Animated loader */}
+            <div className="relative w-24 h-24 mx-auto mb-5">
 
-                <div className="absolute inset-0 rounded-full border-4 border-gray-200" />
+              <div className="absolute inset-0 rounded-full bg-green-50" />
 
-                <div className="absolute inset-0 rounded-full border-4 border-green-500 border-t-transparent animate-spin" />
+              <div className="absolute inset-1 rounded-full border-4 border-gray-200" />
 
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-2xl">₹</span>
+              <div className="absolute inset-1 rounded-full border-4 border-green-500 border-t-transparent animate-spin" />
+
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-green-600">
+                    ₹
+                  </span>
                 </div>
-
               </div>
 
-              <h2 className="text-2xl font-bold text-gray-900">
-                Amount Submitted
-              </h2>
+            </div>
 
-              <p className="text-gray-500 mt-2 text-sm leading-5">
-                Waiting for the customer to choose a driver
+            <h2 className="text-2xl font-extrabold text-gray-900">
+              Amount Submitted
+            </h2>
+
+            <p className="text-gray-500 mt-2 text-sm leading-5 max-w-xs mx-auto">
+              Waiting for the customer to choose a driver
+            </p>
+
+          </div>
+
+
+          {/* Amount */}
+          <div className="px-5">
+
+            <div className="relative overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 rounded-2xl p-5 text-center">
+
+              <div className="absolute -right-8 -top-8 w-20 h-20 rounded-full bg-green-100/60" />
+
+              <p className="relative text-sm font-medium text-gray-500">
+                Your Amount
               </p>
 
-            </div>
-
-
-            {/* Amount */}
-            <div className="px-5">
-
-              <div className="bg-gray-50 rounded-2xl p-5 text-center">
-
-                <p className="text-sm text-gray-500">
-                  Your Amount
-                </p>
-
-                <p className="text-3xl font-extrabold text-gray-900 mt-1">
-                  ₹{driverQuote?.amount}
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {/* Trip information */}
-            <div className="p-5 grid grid-cols-2 gap-3">
-
-              <div className="bg-blue-50 rounded-2xl p-4">
-
-                <p className="text-xs text-gray-500">
-                  Pickup Distance
-                </p>
-
-                <p className="text-xl font-bold text-gray-900 mt-1">
-                  {driverQuote?.distanceKm} km
-                </p>
-
-              </div>
-
-
-              <div className="bg-green-50 rounded-2xl p-4">
-
-                <p className="text-xs text-gray-500">
-                  ETA
-                </p>
-
-                <p className="text-xl font-bold text-gray-900 mt-1">
-                  {driverQuote?.etaMinutes} min
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {/* Status */}
-            <div className="px-5 pb-5">
-
-              <div className="border border-yellow-200 bg-yellow-50 rounded-2xl p-4">
-
-                <div className="flex items-start gap-3">
-
-                  <div className="w-9 h-9 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
-                    <span className="animate-pulse">
-                      ⏳
-                    </span>
-                  </div>
-
-                  <div>
-
-                    <p className="font-semibold text-yellow-800">
-                      Waiting for customer
-                    </p>
-
-                    <p className="text-sm text-yellow-700 mt-1">
-                      Your price has been sent to the customer.
-                      Please wait while they compare driver offers.
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-            {/* Bottom */}
-            <div className="border-t bg-gray-50 px-5 py-4 text-center">
-
-              <p className="text-xs text-gray-500">
-                You will be notified when the customer selects a driver.
+              <p className="relative text-4xl font-black text-gray-900 mt-1">
+                ₹{driverQuote?.amount}
               </p>
 
             </div>
 
           </div>
 
+
+          {/* Trip Information */}
+          <div className="p-5 grid grid-cols-2 gap-3">
+
+            {/* Distance */}
+            <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4">
+
+              <div className="flex items-center gap-2">
+
+                <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center">
+                  <span className="text-lg">
+                    📍
+                  </span>
+                </div>
+
+                <div>
+                  <p className="text-xs text-gray-500">
+                    Pickup Distance
+                  </p>
+
+                  <p className="text-xl font-extrabold text-gray-900 mt-0.5">
+                    {driverQuote?.distanceKm} km
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* ETA */}
+            <div className="bg-green-50 border border-green-100 rounded-2xl p-4">
+
+              <div className="flex items-center gap-2">
+
+                <div className="w-9 h-9 rounded-xl bg-green-100 flex items-center justify-center">
+                  <span className="text-lg">
+                    🕐
+                  </span>
+                </div>
+
+                <div>
+                  <p className="text-xs text-gray-500">
+                    ETA
+                  </p>
+
+                  <p className="text-xl font-extrabold text-gray-900 mt-0.5">
+                    {driverQuote?.etaMinutes} min
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* Waiting Status */}
+          <div className="px-5 pb-5">
+
+            <div className="border border-yellow-200 bg-yellow-50 rounded-2xl p-4">
+
+              <div className="flex items-start gap-3">
+
+                <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center shrink-0">
+
+                  <span className="text-lg animate-pulse">
+                    ⏳
+                  </span>
+
+                </div>
+
+                <div className="flex-1">
+
+                  <p className="font-bold text-yellow-800">
+                    Waiting for customer
+                  </p>
+
+                  <p className="text-sm text-yellow-700 mt-1 leading-5">
+                    Your price has been sent to the customer.
+                    Please wait while they compare driver offers.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* Bottom Actions */}
+          <div className="border-t border-gray-100 bg-gray-50 px-5 py-5">
+
+            <p className="text-xs text-gray-500 text-center mb-4">
+              You will be notified when the customer selects a driver.
+            </p>
+
+            {/* Cancel Button */}
+            <button
+              onClick={Reassign}
+              className="
+                w-full
+                flex
+                items-center
+                justify-center
+                gap-2
+                py-3.5
+                rounded-xl
+                bg-white
+                text-red-600
+                border
+                border-red-200
+                font-bold
+                shadow-sm
+                hover:bg-red-50
+                hover:border-red-300
+                active:scale-[0.98]
+                transition-all
+                duration-200
+              "
+            >
+              <span className="text-lg">
+                ✕
+              </span>
+
+              <span>
+                Cancel
+              </span>
+            </button>
+
+          </div>
+
         </div>
+
       </div>
-    )
-  }
+
+    </div>
+  );
+}
 
   if (!order) {
     return (
@@ -481,113 +567,173 @@ useEffect(() => {
       )}
 
 
-      {/* Bike Parcel */}
-
-      {order.serviceType === "bike_parcel" &&
-        order.parcel && (
-
-          <div className="bg-white rounded-2xl shadow p-5">
-
-            <h2 className="font-bold text-lg mb-4">
-              Parcel Details
-            </h2>
-
-            <div className="space-y-3">
-
-              <div className="flex justify-between">
-                <span className="text-gray-500">
-                  Item
-                </span>
-
-                <span className="font-semibold">
-                  {order.parcel.itemName}
-                </span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-gray-500">
-                  Category
-                </span>
-
-                <span className="font-semibold">
-                  {order.parcel.category}
-                </span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-gray-500">
-                  Weight
-                </span>
-
-                <span className="font-semibold">
-                  {order.parcel.weight} kg
-                </span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-gray-500">
-                  Quantity
-                </span>
-
-                <span className="font-semibold">
-                  {order.parcel.quantity}
-                </span>
-              </div>
-
-              {order.parcel.instructions && (
-                <div className="pt-3 border-t">
-                  <p className="text-sm text-gray-500">
-                    Instructions
-                  </p>
-
-                  <p className="mt-1">
-                    {order.parcel.instructions}
-                  </p>
-                </div>
-              )}
-
-            </div>
-
-          </div>
-
-        )}
-
-
       {/* Amount */}
 
-      <div className="bg-white rounded-2xl shadow p-5">
+      <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-5 sm:p-6">
 
-        <h2 className="font-bold text-lg mb-4">
-          Enter Your Amount
-        </h2>
+  {/* Header */}
+  <div className="mb-5">
+    <h2 className="text-xl font-extrabold text-gray-900">
+      Enter Your Amount
+    </h2>
 
-        <div className="relative">
+    <p className="text-sm text-gray-500 mt-1">
+      Enter the amount you want to charge for this order.
+    </p>
+  </div>
 
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold">
-            ₹
-          </span>
 
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="Enter amount"
-            className="w-full border rounded-xl py-4 pl-9 pr-4 text-lg font-semibold outline-none focus:ring-2 focus:ring-green-500"
+  {/* Amount Input */}
+  <div className="relative">
+
+    <span
+      className="
+        absolute
+        left-4
+        top-1/2
+        -translate-y-1/2
+        text-gray-500
+        text-xl
+        font-bold
+        pointer-events-none
+      "
+    >
+      ₹
+    </span>
+
+    <input
+      type="number"
+      min="0"
+      value={amount}
+      onChange={(e) => setAmount(e.target.value)}
+      placeholder="Enter amount"
+      className="
+        w-full
+        h-16
+        border
+        border-gray-200
+        bg-gray-50
+        rounded-2xl
+        pl-11
+        pr-4
+        text-xl
+        font-bold
+        text-gray-900
+        placeholder:text-gray-400
+        outline-none
+        transition-all
+        duration-200
+        focus:bg-white
+        focus:border-green-500
+        focus:ring-4
+        focus:ring-green-100
+      "
+    />
+
+  </div>
+
+
+  {/* Actions */}
+  <div className="mt-5 grid grid-cols-1 gap-3">
+
+    {/* Submit */}
+    <button
+      onClick={submitAmount}
+      disabled={submitting || !amount}
+      className="
+        w-full
+        h-14
+        flex
+        items-center
+        justify-center
+        gap-2
+        rounded-2xl
+        bg-green-600
+        hover:bg-green-700
+        active:scale-[0.98]
+        disabled:bg-gray-300
+        disabled:text-gray-500
+        disabled:cursor-not-allowed
+        text-white
+        font-bold
+        text-base
+        shadow-md
+        shadow-green-100
+        transition-all
+        duration-200
+      "
+    >
+      {submitting ? (
+        <>
+          <span
+            className="
+              w-5
+              h-5
+              border-2
+              border-white/40
+              border-t-white
+              rounded-full
+              animate-spin
+            "
           />
 
-        </div>
+          <span>
+            Submitting...
+          </span>
+        </>
+      ) : (
+        <>
+          <span className="text-lg">
+            ✓
+          </span>
 
-        <button
-          onClick={submitAmount}
-          disabled={submitting}
-          className="w-full mt-4 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-bold py-4 rounded-xl"
-        >
-          {submitting
-            ? "Submitting..."
-            : "Submit Amount"}
-        </button>
+          <span>
+            Submit Amount
+          </span>
+        </>
+      )}
+    </button>
 
-      </div>
+
+    {/* Cancel */}
+    <button
+      onClick={Reassign}
+      disabled={submitting}
+      className="
+        w-full
+        h-14
+        flex
+        items-center
+        justify-center
+        gap-2
+        rounded-2xl
+        bg-red-50
+        text-red-600
+        border
+        border-red-100
+        hover:bg-red-100
+        hover:border-red-200
+        active:scale-[0.98]
+        disabled:opacity-50
+        disabled:cursor-not-allowed
+        font-bold
+        text-base
+        transition-all
+        duration-200
+      "
+    >
+      <span className="text-lg">
+        ✕
+      </span>
+
+      <span>
+        Cancel
+      </span>
+    </button>
+
+  </div>
+
+</div>
 
     </div>
   );
