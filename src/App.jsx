@@ -11,6 +11,7 @@ import GoodsCurrentOrder from './pages/goodsAuto/goodscurrent';
 import GoodsPickedUpOrder from './pages/goodsAuto/goodsPickup';
 import GoodsArrive from './pages/goodsAuto/goodsArrived';
 import AcceptedOrder from './pages/goodsAuto/goodsAccepted';
+import LanguageSelector from './pages/LanguageSelector';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                     <Route element={<Protected />}>
                         <Route path='/details' element={<Details />} />
                         <Route path='/' element={<Dashboard />} />
+                        <Route path='/Language' element={<LanguageSelector />} />
 
                         <Route path='/goods/available/order' element={<GoodsNearbyOrders />} />
                         <Route path='/goods/accepted/order' element={<AcceptedOrder />} />

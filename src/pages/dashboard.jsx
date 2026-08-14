@@ -154,6 +154,7 @@ const Dashboard = () => {
           </div>
 
         </div>
+        
       </div>
       <PartnerNavbar serviceType={serviceType} />
     </div>
