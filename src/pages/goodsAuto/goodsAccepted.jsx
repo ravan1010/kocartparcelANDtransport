@@ -116,20 +116,32 @@ useEffect(() => {
   };
 
   const Reassign = async () => {
-    try {
-      const res = await api.put(
-        `/api/partner/orders/Reassign/${order._id}`,{}
-      );
+  try {
+    if (!order?._id) return;
 
-      if(res.data.success){
-      navigate("/goods/available/order")
-      }
+    setLoading(true);
 
-      fetchAcceptedOrder(); // refresh status
-    } catch (err) {
-      alert(err.response?.data?.message );
+    const res = await api.put(
+      `/api/partner/orders/Reassign/${order._id}`,
+      {}
+    );
+
+    if (res.data.success) {
+      navigate("/goods/available/order", { replace: true });
+      return;
     }
+
+  } catch (err) {
+    console.error("Reassign error:", err);
+
+    alert(
+      err.response?.data?.message ||
+      "Unable to cancel order"
+    );
+  } finally {
+    setLoading(false);
   }
+};
 
   if (loading) {
     return (
