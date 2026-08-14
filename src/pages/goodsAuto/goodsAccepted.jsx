@@ -583,6 +583,41 @@ useEffect(() => {
 
       )}
 
+ <button
+    type="button"
+    onClick={Reassign}
+    disabled={submitting || loading}
+    className="
+      w-full
+      h-14
+      flex
+      items-center
+      justify-center
+      gap-2
+      rounded-2xl
+      bg-red-50
+      text-red-600
+      border-2
+      border-red-200
+      hover:bg-red-100
+      hover:border-red-300
+      active:scale-[0.98]
+      disabled:opacity-50
+      disabled:cursor-not-allowed
+      font-bold
+      text-base
+      transition-all
+      duration-200
+    "
+  >
+    <span className="text-lg">
+      ✕
+    </span>
+
+    <span>
+      Cancel Order
+    </span>
+  </button>
 
       {/* Amount */}
 
@@ -741,10 +776,6 @@ useEffect(() => {
       Cancel Order
     </span>
   </button>
-
-  <button>
-              raa
-            </button>
 
 </div>
 
