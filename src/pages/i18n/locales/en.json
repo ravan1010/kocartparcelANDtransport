@@ -5,8 +5,17 @@
     "cancel": "Cancel",
     "yes": "Yes",
     "no": "No",
-    "navigate": "Navigate",
-    "partner": "delivery partner"
+    "navigate": "Navigate"
+  },
+  
+  "dashboard": {
+    "partner": "Partner",
+    "onlineReady": "🟢 Online - Ready for Orders",
+    "offline": "🔴 Offline",
+    "online": " Online",
+    "kocartCash": "KOCART Cash",
+    "activateAccount": "ACTIVATE YOUR ACCOUNT",
+    "contactToActivate": "Contact {{phone1}} or {{phone2}} to activate your account"
   },
   "order": {
     "order": "Order",

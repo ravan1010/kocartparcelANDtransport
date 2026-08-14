@@ -70,10 +70,14 @@ const Dashboard = () => {
         {/* Popup Content */}
         <div className="bg-white rounded-2xl shadow-lg text-center z-10 w-96 p-6">
           <h1 className="text-red-500 mb-5">
-            ACTIVATE YOUR ACCOUNT
+            {t("dashboard.activateAccount")}
           </h1>
+
           <p>
-            contact (7349343243) or (8088303214) <br /> to active
+            {t("dashboard.contactToActivate", {
+              phone1: "7349343243",
+              phone2: "8088303214"
+            })}
           </p>
 
         </div>
@@ -107,7 +111,7 @@ const Dashboard = () => {
 
             <div>
               <h2 className="text-xl font-bold text-gray-800">
-                        {t("partner")}
+                {t("dashboard.partner")}
               </h2>
 
               <p
@@ -115,31 +119,31 @@ const Dashboard = () => {
                   }`}
               >
                 {isOnline
-                  ? "🟢 Online - Ready for Orders"
-                  : "🔴 Offline"}
+    ? t("dashboard.online")
+    : t("dashboard.offline")}
               </p>
             </div>
 
           </div>
 
-          
-            <>
-              {/* Center - Dashboard Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1">
 
-                <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-center">
-                  <p className="text-xs text-gray-500">
-                    KOCART Cash
-                  </p>
+          <>
+            {/* Center - Dashboard Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1">
 
-                  <h2 className="text-2xl font-bold text-yellow-700">
-                    ₹{Number(kocartAmount || 0).toFixed(2)}
+              <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-center">
+                <p className="text-xs text-gray-500">
+                  KOCART Cash
+                </p>
 
-                  </h2>
-                </div>
+                <h2 className="text-2xl font-bold text-yellow-700">
+                  ₹{Number(kocartAmount || 0).toFixed(2)}
 
+                </h2>
               </div>
-            </>
+
+            </div>
+          </>
 
           {/* Right - Toggle */}
           <div className="flex flex-col items-center gap-2">
@@ -158,7 +162,7 @@ const Dashboard = () => {
           </div>
 
         </div>
-        
+
       </div>
       <PartnerNavbar serviceType={serviceType} />
     </div>
