@@ -27,6 +27,8 @@ export default function AcceptedOrder() {
     const currentOrder = data.order;
     const currentDriverId = data.driverId;
 
+
+
     setOrder(currentOrder);
     setdriverId(currentDriverId);
 
@@ -40,7 +42,7 @@ export default function AcceptedOrder() {
 
     // Driver selected
     if (
-      currentOrder?.status === "driver_assigned" &&
+      currentOrder.status === "driver_assigned" &&
       String(currentOrder.driver) === String(currentDriverId)
     ) {
       navigate("/goods/arrive/order", { replace: true });
@@ -49,7 +51,7 @@ export default function AcceptedOrder() {
 
     // Another driver selected
     if (
-      currentOrder?.status === "driver_assigned" &&
+      currentOrder.status === "driver_assigned" &&
       String(currentOrder.driver) !== String(currentDriverId)
     ) {
       navigate("/goods/available/order", { replace: true });
@@ -58,9 +60,7 @@ export default function AcceptedOrder() {
 
     // Another driver selected
     if (
-      currentOrder?.status === "cancelled" &&
-      String(currentOrder.driver) !== String(currentDriverId)
-    ) {
+      currentOrder.status === "cancelled"    ) {
       navigate("/goods/available/order", { replace: true });
       return;
     }
