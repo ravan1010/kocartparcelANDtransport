@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../../../api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function GoodsNearbyOrders() {
     const navigate = useNavigate();
+    const { serviceType } = useParams();
+    
 
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,8 +15,6 @@ export default function GoodsNearbyOrders() {
   const isDisabled = oneclick !== 1;
 
  const fetchNearbyOrders = async () => {
-
-    let serviceType = "goods_auto"
 
     try {
       const res = await api.get(`/api/partner/orders/nearby/${serviceType}`);

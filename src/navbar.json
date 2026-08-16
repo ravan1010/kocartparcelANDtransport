@@ -2,7 +2,7 @@
   "goods_auto": [
     {
       "name": "available ",
-      "path": "/goods/available/order"
+      "path": "/goods/available/order/goods_auto"
     },
     {
       "name": "accepted ",
@@ -24,7 +24,7 @@
   "4_wheel_goods_auto": [
     {
       "name": "available ",
-      "path": "/goods/available/order"
+      "path": "/goods/available/order/4_wheel_goods_auto"
     },
     {
       "name": "accepted ",

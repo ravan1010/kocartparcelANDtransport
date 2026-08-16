@@ -25,7 +25,7 @@ function App() {
                         <Route path='/details' element={<Details />} />
                         <Route path='/' element={<Dashboard />} />
 
-                        <Route path='/goods/available/order' element={<GoodsNearbyOrders />} />
+                        <Route path='/goods/available/order/:serviceType' element={<GoodsNearbyOrders />} />
                         <Route path='/goods/accepted/order' element={<AcceptedOrder />} />
                         <Route path='/goods/arrive/order' element={<GoodsArrive /> } />
                         <Route path='/goods/current/order' element={<GoodsCurrentOrder />} />
