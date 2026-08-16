@@ -44,8 +44,7 @@ export default function AcceptedOrder() {
 
     // Driver selected
     if (
-      currentOrder.status === "driver_assigned" &&
-      String(currentOrder.driver) === String(currentDriverId)
+     !res.data.partner
     ) {
       navigate("/goods/arrive/order", { replace: true });
       return;
@@ -53,16 +52,8 @@ export default function AcceptedOrder() {
 
     // Another driver selected
     if (
-      currentOrder.status === "driver_assigned" &&
-      String(currentOrder.driver) !== String(currentDriverId)
+      res.data.partner
     ) {
-      navigate("/goods/available/order", { replace: true });
-      return;
-    }
-
-    // Another driver selected
-    if (
-      currentOrder.status === "cancelled"    ) {
       navigate("/goods/available/order", { replace: true });
       return;
     }
