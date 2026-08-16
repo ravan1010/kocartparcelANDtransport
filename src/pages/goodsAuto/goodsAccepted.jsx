@@ -56,7 +56,7 @@ export default function AcceptedOrder() {
     if (
       res.data.partner
     ) {
-      navigate("/goods/available/order", { replace: true });
+      navigate("/", { replace: true });
       return;
     }
   }
