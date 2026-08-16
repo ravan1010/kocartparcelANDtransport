@@ -42,6 +42,8 @@ export default function AcceptedOrder() {
 
     setWaitingForCustomer(false);
 
+    if(res.data.redirect){
+
     // Driver selected
     if (
      !res.data.partner
@@ -57,6 +59,7 @@ export default function AcceptedOrder() {
       navigate("/goods/available/order", { replace: true });
       return;
     }
+  }
 
   } catch (err) {
     console.error("Fetch accepted order error:", err);
