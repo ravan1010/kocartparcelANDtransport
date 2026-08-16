@@ -22,8 +22,18 @@ export default function GoodsArrive() {
   };
 
   useEffect(() => {
+  // First request immediately
+  fetchOrder();
+
+  // Then check every 5 seconds
+  const interval = setInterval(() => {
     fetchOrder();
-  }, []);
+  }, 5000);
+
+  return () => {
+    clearInterval(interval);
+  };
+}, []);
 
   useEffect(() => {
     if (!order?._id) return;

@@ -513,8 +513,6 @@ useEffect(() => {
 
       {/* Goods */}
 
-      {order.serviceType === "goods_auto" && goods && (
-
         <div className="bg-white rounded-2xl shadow p-5">
 
           <h2 className="font-bold text-lg mb-4">
@@ -592,8 +590,6 @@ useEffect(() => {
           </div>
 
         </div>
-
-      )}
 
       {/* Amount */}
 

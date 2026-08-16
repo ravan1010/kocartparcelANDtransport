@@ -26,14 +26,19 @@ export default function GoodsNearbyOrders() {
     }
   };
 
-  useEffect(() => {
+useEffect(() => {
+  // First request immediately
+  fetchNearbyOrders();
+
+  // Then check every 5 seconds
+  const interval = setInterval(() => {
     fetchNearbyOrders();
+  }, 5000);
 
-    // Refresh every 10 seconds
-    const interval = setInterval(fetchNearbyOrders, 10000);
-
-    return () => clearInterval(interval);
-  }, []);
+  return () => {
+    clearInterval(interval);
+  };
+}, []);
 
  const acceptOrder = async (orderId) => {
     if (oneclick === 2) {
