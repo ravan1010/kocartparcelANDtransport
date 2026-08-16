@@ -27,6 +27,8 @@ export default function AcceptedOrder() {
     const currentOrder = data.order;
     const currentDriverId = data.driverId;
 
+    console.log('order :', currentOrder)
+    console.log('driver :', currentDriverId)
 
 
     setOrder(currentOrder);
