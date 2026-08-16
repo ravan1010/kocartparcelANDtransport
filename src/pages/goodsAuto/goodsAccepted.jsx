@@ -42,7 +42,7 @@ export default function AcceptedOrder() {
 
     setWaitingForCustomer(false);
 
-    if(res.data.redirect){
+    if(res.data.redirect === true){
 
     // Driver selected
     if (
