@@ -103,7 +103,7 @@ export default function GoodsArrive() {
 
 
 
-  if (!order || order.serviceType !== "goods_auto") {
+  if (!order) {
     return (
       <div className="text-center mt-10">
         No Active Order
