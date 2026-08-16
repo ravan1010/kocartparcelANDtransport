@@ -16,6 +16,10 @@ export default function AcceptedOrder() {
   const [error, setError] = useState("");
 
 
+const [oneclick, setOneclick] = useState(1);   
+
+  const isDisabled = oneclick !== 1;
+
   const fetchAcceptedOrder = async () => {
   try {
     const res = await api.get("/api/parter/accepted/order");
@@ -44,7 +48,7 @@ export default function AcceptedOrder() {
 
     if(res.data.redirect === true){
 
-      console.log(res.data.redirect)
+      console.log( res.data.redirect)
       console.log(res.data.partner)
     // Driver selected
     if (
@@ -93,9 +97,14 @@ useEffect(() => {
       return;
     }
 
+    if(oneclick === 2){
+      return;
+    }
+
     try {
       setSubmitting(true);
       setLoading(true)
+      setOneclick(2)
 
       const { data } = await api.post(
         `/api/parter/accepted/order/amount/${order._id}`,
@@ -106,6 +115,7 @@ useEffect(() => {
 
       if (data.success) {
         setOrder(data.order);
+        setOneclick(1)
         alert("Amount submitted successfully");
         fetchAcceptedOrder();
       }
@@ -661,7 +671,7 @@ useEffect(() => {
   <button
     type="button"
     onClick={submitAmount}
-    disabled={submitting || !amount}
+    disabled={submitting || !amount || isDisabled}
     className="
       w-full
       h-14

@@ -10,6 +10,10 @@ export default function GoodsPickedUpOrder() {
   const [order, setOrder] = useState(null);
   const [deliveryOtp, setDeliveryOtp] = useState("");
 
+  const [oneclick, setOneclick] = useState(1);   
+
+  const isDisabled = oneclick !== 1;
+
   const fetchOrder = async () => {
     try {
       const res = await api.get("/api/partner/orders/picked-up");
@@ -25,7 +29,13 @@ export default function GoodsPickedUpOrder() {
   }, []);
 
   const completeDelivery = async () => {
+
+    if(oneclick === 2){
+      return;
+    }
+
     try {
+      setOneclick(2)
       const res = await api.put(
         `/api/partner/orders/verify-delivery/${order._id}`,
         {
@@ -38,6 +48,7 @@ export default function GoodsPickedUpOrder() {
 
 
       fetchOrder();
+      setOneclick(1)
     } catch (err) {
       alert(err.response?.data?.message || "Invalid OTP");
     }
@@ -301,6 +312,7 @@ export default function GoodsPickedUpOrder() {
 
             <button
               onClick={completeDelivery}
+              disabled={isDisabled}
               className="w-full mt-4 bg-green-600 hover:bg-green-700 active:bg-green-800 text-white py-3.5 rounded-xl font-bold shadow-sm active:scale-[0.98] transition"
             >
               ✓ Complete
