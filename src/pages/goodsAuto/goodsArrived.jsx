@@ -15,6 +15,7 @@ export default function GoodsArrive() {
     try {
       const res = await api.get("/api/partner/orders/current");
       setOrder(res.data.order);
+      console.log(res.data)
     } catch (err) {
       console.log(err);
     }
