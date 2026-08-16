@@ -21,7 +21,7 @@
       "path": "/goods/pickup/order"
     }
   ],
-  "4_wheel_auto": [
+  "4_wheel_goods_auto": [
     {
       "name": "available ",
       "path": "/goods/available/order"
