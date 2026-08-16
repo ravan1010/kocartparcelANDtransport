@@ -14,7 +14,7 @@
     },
     {
       "name": "pickup",
-      "path": "/goods/current/orderd"
+      "path": "/goods/current/order"
     },
     {
       "name": "trip",
@@ -36,7 +36,7 @@
     },
     {
       "name": "pickup",
-      "path": "/goods/current/orderd"
+      "path": "/goods/current/order"
     },
     {
       "name": "trip",
