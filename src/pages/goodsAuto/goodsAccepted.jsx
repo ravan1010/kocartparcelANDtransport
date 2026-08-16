@@ -44,6 +44,8 @@ export default function AcceptedOrder() {
 
     if(res.data.redirect === true){
 
+      console.log(res.data.redirect)
+      console.log(res.data.partner)
     // Driver selected
     if (
      res.data.partner === false
