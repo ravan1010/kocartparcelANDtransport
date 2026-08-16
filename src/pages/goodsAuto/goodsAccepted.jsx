@@ -46,7 +46,7 @@ export default function AcceptedOrder() {
 
     // Driver selected
     if (
-     !res.data.partner
+     res.data.partner === false
     ) {
       navigate("/goods/arrive/order", { replace: true });
       return;
@@ -54,7 +54,7 @@ export default function AcceptedOrder() {
 
     // Another driver selected
     if (
-      res.data.partner
+      res.data.partner === true
     ) {
       navigate("/", { replace: true });
       return;
