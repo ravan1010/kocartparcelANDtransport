@@ -30,7 +30,7 @@ const [oneclick, setOneclick] = useState(1);
        if (
      data.redirect === "assign"
     ) {
-      navigate(`/goods/arrive/order/${res.data.partner}`, { replace: true });
+      navigate(`/goods/arrive/order`, { replace: true });
       return;
     }
 
@@ -38,7 +38,7 @@ const [oneclick, setOneclick] = useState(1);
     if (
       data.redirect === "pending"
     ) {
-      navigate("/", { replace: true });
+      navigate(`/goods/available/order/${data.partner}`, { replace: true });
       return;
     }
 
