@@ -149,7 +149,7 @@ useEffect(() => {
     );
 
     if (res.data.success) {
-      navigate("/goods/available/order", { replace: true });
+      navigate(`/goods/available/order/${res.data.partner}`, { replace: true });
       return;
     }
 
