@@ -14,6 +14,7 @@ export default function AcceptedOrder() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [redirect, setredirect] = useState("");
 
 
 const [oneclick, setOneclick] = useState(1);   
@@ -46,26 +47,23 @@ const [oneclick, setOneclick] = useState(1);
 
     setWaitingForCustomer(false);
 
-    if(res.data.redirect === true){
 
-      console.log( res.data.redirect)
-      console.log(res.data.partner)
-    // Driver selected
+   
     if (
-     res.data.partner === false
+     res.data.redirect === "assign"
     ) {
-      navigate("/goods/arrive/order", { replace: true });
+      navigate(`/goods/arrive/order/${res.data.partner}`, { replace: true });
       return;
     }
 
     // Another driver selected
     if (
-      res.data.partner === true
+      res.data.redirect === "pending"
     ) {
       navigate("/", { replace: true });
       return;
     }
-  }
+
 
   } catch (err) {
     console.error("Fetch accepted order error:", err);
