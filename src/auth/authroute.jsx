@@ -76,7 +76,7 @@ const Protected = () => {
     )}
 
     {/* Error */}
-    {locationError && (
+    {/* {locationError && (
       <div className="mt-6">
 
         <div className="mb-4 rounded-2xl border border-red-100 bg-red-50 px-4 py-3">
@@ -109,7 +109,7 @@ const Protected = () => {
         </button>
 
       </div>
-    )}
+    )} */}
 
   </div>
 </div>
