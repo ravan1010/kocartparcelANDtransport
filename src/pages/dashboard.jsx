@@ -49,9 +49,12 @@ const Dashboard = () => {
         { isOnline: newStatus },
         { withCredentials: true }
       ).then((res) => {
+
         if (res.data.success === true) {
           fetchDashboard()
         }
+
+        alert(res.data.message)
       })
     } catch (err) {
       console.error(err);
