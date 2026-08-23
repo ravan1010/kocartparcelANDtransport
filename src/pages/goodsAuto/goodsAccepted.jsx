@@ -27,6 +27,21 @@ const [oneclick, setOneclick] = useState(1);
 
     const data = res.data;
 
+       if (
+     data.redirect === "assign"
+    ) {
+      navigate(`/goods/arrive/order/${res.data.partner}`, { replace: true });
+      return;
+    }
+
+    // Another driver selected
+    if (
+      data.redirect === "pending"
+    ) {
+      navigate("/", { replace: true });
+      return;
+    }
+
     // IMPORTANT:
     // Use fresh API response values, not old React state
     const currentOrder = data.order;
@@ -46,23 +61,6 @@ const [oneclick, setOneclick] = useState(1);
     }
 
     setWaitingForCustomer(false);
-
-
-   
-    if (
-     res.data.redirect === "assign"
-    ) {
-      navigate(`/goods/arrive/order/${res.data.partner}`, { replace: true });
-      return;
-    }
-
-    // Another driver selected
-    if (
-      res.data.redirect === "pending"
-    ) {
-      navigate("/", { replace: true });
-      return;
-    }
 
 
   } catch (err) {
