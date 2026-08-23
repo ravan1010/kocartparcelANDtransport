@@ -21,35 +21,40 @@ const [oneclick, setOneclick] = useState(1);
 
   const isDisabled = oneclick !== 1;
 
-  const fetchAcceptedOrder = async () => {
+ const fetchAcceptedOrder = async () => {
   try {
-    const res = await api.get("/api/parter/accepted/order");
+    const res = await api.get(
+      "/api/parter/accepted/order"
+    );
 
     const data = res.data;
 
-       if (
-     data.redirect === "assign"
-    ) {
-      navigate(`/goods/arrive/order`, { replace: true });
+    console.log("Accepted order response:", data);
+
+    // Driver already has assigned/arrived order
+    if (data.redirect === "assign") {
+      navigate("/goods/arrive/order", {
+        replace: true,
+      });
       return;
     }
 
-    // Another driver selected
-    if (
-      data.redirect === "pending"
-    ) {
-      navigate(`/goods/available/order/${data.partner}`, { replace: true });
+    // No accepted order
+    if (data.redirect === "pending") {
+      navigate(
+        `/goods/available/order/${data.partner}`,
+        {
+          replace: true,
+        }
+      );
       return;
     }
 
-    // IMPORTANT:
-    // Use fresh API response values, not old React state
     const currentOrder = data.order;
     const currentDriverId = data.driverId;
 
-    console.log('order :', currentOrder)
-    console.log('driver :', currentDriverId)
-
+    console.log("order:", currentOrder);
+    console.log("driver:", currentDriverId);
 
     setOrder(currentOrder);
     setdriverId(currentDriverId);
@@ -61,10 +66,14 @@ const [oneclick, setOneclick] = useState(1);
     }
 
     setWaitingForCustomer(false);
-
+    setDriverQuote(null);
 
   } catch (err) {
-    console.error("Fetch accepted order error:", err);
+    console.error(
+      "Fetch accepted order error:",
+      err
+    );
+
     setError("Unable to load order");
   } finally {
     setLoading(false);
