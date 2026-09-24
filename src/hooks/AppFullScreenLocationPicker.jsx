@@ -563,11 +563,13 @@ const AppFullScreenLocationPicker = ({
     // LAT LNG
     // --------------------------------
 
-    const latitude =
-      Number(location.latitude);
+    const latitude = Number(
+  Number(location.latitude).toFixed(6)
+);
 
-    const longitude =
-      Number(location.longitude);
+const longitude = Number(
+  Number(location.longitude).toFixed(6)
+);
 
     if (
       !Number.isFinite(latitude) ||
