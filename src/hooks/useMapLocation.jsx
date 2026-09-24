@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import api from "../api";
 
 const DEFAULT_LOCATION = {
   latitude: 12.2958,
