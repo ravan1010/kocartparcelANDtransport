@@ -214,8 +214,7 @@ const AppFullScreenLocationPicker = ({
         setAvailabilityLoading(true);
 
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL
-          }/api/check`,
+          `https://serverside.kocart.online/api/check`,
           {
             method: "POST",
 
