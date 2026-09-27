@@ -5,6 +5,7 @@ import { ToggleRight, ToggleLeft } from 'lucide-react';
 import { generateAndSaveFCMToken } from '../utili/token.js';
 import PartnerNavbar from './navbar.jsx';
 import { useTranslation } from 'react-i18next';
+import AutoHome from './useAutoLiveLocation.jsx';
 
 const Dashboard = () => {
 
@@ -20,7 +21,7 @@ const Dashboard = () => {
 
     try {
       const res = await api.get('/api/parcel/dashboard')
-      console.log(res.data.isOnline, 'dashboard')
+      // console.log(res.data.isOnline, 'dashboard')
       setisOnline(res.data.isOnline)
       setkocartAmount(res.data.kocartAmount || 0)
       setactivate(res.data.activate)
@@ -85,6 +86,7 @@ const Dashboard = () => {
   }
 
   return (
+    <>
     <div className="p-4 md:p-6 max-w-6xl mx-auto space-y-6">
 
       {/* Delivery Status */}
@@ -165,6 +167,8 @@ const Dashboard = () => {
       </div>
       <PartnerNavbar serviceType={serviceType} />
     </div>
+    <AutoHome />
+    </>
   )
 }
 
