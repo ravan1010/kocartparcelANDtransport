@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../../api";
 import { useNavigate } from "react-router-dom";
+import AutoHome from "../useAutoLiveLocation";
 
 export default function AcceptedOrder() {
 
@@ -401,6 +402,7 @@ useEffect(() => {
   const goods = order.goods;
 
   return (
+    <>
     <div className="max-w-xl mx-auto p-4 space-y-4">
 
       {/* Header */}
@@ -765,5 +767,7 @@ useEffect(() => {
 </div>
 
     </div>
+        <AutoHome />
+    </>
   );
 }

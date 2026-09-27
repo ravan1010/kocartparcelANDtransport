@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../../api";
 import { useNavigate, useParams } from "react-router-dom";
+import AutoHome from "../useAutoLiveLocation";
 
 export default function GoodsNearbyOrders() {
     const navigate = useNavigate();
@@ -66,6 +67,7 @@ useEffect(() => {
   }
 
   return (
+    <>
 <div className="space-y-5">
       {orders.length === 0 ? (
         <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-10 text-center">
@@ -258,5 +260,7 @@ useEffect(() => {
         ))
       )}
     </div>
+        <AutoHome />
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import useAutoLiveLocation from "../hooks/useAutoLiveLocation";
+import useAutoLiveLocation from "./liveupdate";
 
 const AutoHome = () => {
   const {

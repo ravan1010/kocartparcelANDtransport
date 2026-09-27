@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../../api.js";
 import { useNavigate } from "react-router-dom";
+import AutoHome from "../useAutoLiveLocation.jsx";
 
 export default function GoodsPickedUpOrder() {
 
@@ -65,6 +66,7 @@ export default function GoodsPickedUpOrder() {
   }
 
   return (
+    <>
     <div className="max-w-xl mx-auto px-4 py-6">
       <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
 
@@ -323,5 +325,8 @@ export default function GoodsPickedUpOrder() {
         </div>
       </div>
     </div>
+        <AutoHome />
+
+    </>
   );
 }
