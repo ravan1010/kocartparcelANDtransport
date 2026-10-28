@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 function Login() {
   console.log('')
   const handleGoogleLogin = () => {
-    window.open("https://serverside.kocart.online/auth/google/parcel", "_self");
+    // window.open("https://serverside.kocart.online/auth/google/admin", "_self");
+    window.open("http://localhost:5001/auth/google/admin", "_self");
+
   };
 
   return (
@@ -15,7 +17,7 @@ function Login() {
         <FcLeft size={25} />
       </Link>
     <h2 className="font-semibold text-black-800 ">
-      KOCART Partner
+      KOCART Marketplace Admin Login
     </h2>
     <h2 className="text-4xl font-semibold border-b border-gray-800  mb-3 text-gray-800 ">
       Login

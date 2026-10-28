@@ -1,46 +1,33 @@
-// useAuthCheck.js
 import { useEffect, useState } from "react";
 import api from "../../api";
 
-const useDeliveryBoyAuth = () => {
-  const [user, setUser] = useState(null);
+const ADMINMainauth = () => {
+  const [admin, setAdmin] = useState(null);
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    let isMounted = true;
+    let active = true;
 
-    const checkAuth = async () => {
-      try {
-        const res = await api.get("/api/parcelandtransport/token", {
-          withCredentials: true, 
-        });
-
-        if (isMounted) {
-          setUser(res.data?.user || null);
-        } 
-      } catch {
-        if (isMounted) {
-          setUser(null);
+    api
+      .get("/api/adminmain", { withCredentials: true })
+      .then((res) => {
+        if (active) {
+          setAdmin(res.data.user || null);
         }
-      } finally {
-        if (isMounted) {
-          setChecking(false);
-        }
-      }
-    };
-
-    checkAuth();
+      })
+      .catch(() => {
+        if (active) setAdmin(null);
+      })
+      .finally(() => {
+        if (active) setChecking(false);
+      });
 
     return () => {
-      isMounted = false;
-    }; 
+      active = false;
+    };
   }, []);
 
-  return {
-    user,
-    isAdmin: !!user,
-    checking,
-  };
+  return { admin, checking };
 };
 
-export default useDeliveryBoyAuth;
+export default ADMINMainauth;

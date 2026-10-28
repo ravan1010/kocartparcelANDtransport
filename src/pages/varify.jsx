@@ -9,10 +9,10 @@ function Verify() {
   useEffect(() => {
     
     api
-      .get("/auth/parcelandtransport/cookie") // cookie auto sent
+      .get("/auth/admin/cookie") // cookie auto sent
       .then((res) => {
         console.log("User:", res.data);
-        navigate("/details"); // or wherever
+        navigate("/")
       })
       .catch(() => {
         navigate("/login");
