@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 function Login() {
   console.log('')
   const handleGoogleLogin = () => {
-    // window.open("https://serverside.kocart.online/auth/google/admin", "_self");
-    window.open("http://localhost:5001/auth/google/admin", "_self");
+     window.open("https://serverside.kocart.online/auth/google/admin", "_self");
+    // window.open("http://localhost:5001/auth/google/admin", "_self");
 
   };
 
