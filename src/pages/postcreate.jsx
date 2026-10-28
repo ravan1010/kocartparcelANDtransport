@@ -182,12 +182,22 @@ const getCurrentLocation = () => {
         </button>
 
         {location && (
-          <p>
-            Latitude: {location.coordinates[1]}
-            <br />
-            Longitude: {location.coordinates[0]}
-          </p>
-        )}
+  <div>
+    <p>
+      Latitude: {location.coordinates[1]}
+      <br />
+      Longitude: {location.coordinates[0]}
+    </p>
+
+    <a
+      href={`https://www.google.com/maps?q=${location.coordinates[1]},${location.coordinates[0]}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View Location on Google Maps
+    </a>
+  </div>
+)}
 
         <button
           type="submit"
