@@ -5,6 +5,7 @@ import api from "../../api.js";
 export default function CreatePost() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState([]);
+  const [category, setcategory] = useState("");
   const [location, setLocation] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -108,6 +109,7 @@ export default function CreatePost() {
         {
           description,
           image,
+          category,
           currentLocation: location,
         },
         { withCredentials: true }
@@ -117,6 +119,7 @@ export default function CreatePost() {
 
       setDescription("");
       setImage([]);
+      setcategory("");
       setLocation(null);
 
       const fileInput = document.getElementById("post-images");
@@ -148,6 +151,44 @@ export default function CreatePost() {
         </div>
 
         <form onSubmit={handleSubmit}>
+          <div style={styles.field}>
+            <label style={styles.label}>Post Category</label>
+            <select
+              value={category}
+              onChange={(e) => setcategory(e.target.value)}
+              style={styles.select}
+              required
+            >
+              <option value="">Select a category</option>
+              <optgroup label="General">
+                <option value="ads">General Ads</option>
+                <option value="other">Other</option>
+              </optgroup>
+              <optgroup label="Property & Accommodation">
+                <option value="rent_room">Room for Rent</option>
+                <option value="pg_room">PG Room</option>
+                <option value="property_sale">Property for Sale</option>
+                <option value="house_sale">House for Sale</option>
+                <option value="land_sale">Land for Sale</option>
+              </optgroup>
+              <optgroup label="Jobs">
+                <option value="job_vacancy">Job Vacancy</option>
+              </optgroup>
+              <optgroup label="Food & Offers">
+                <option value="restaurant_offer">Restaurant Offer</option>
+                <option value="shop_offer">Shop Offer</option>
+              </optgroup>
+              <optgroup label="Local Discoveries">
+                <option value="new_business_nearby">New Business Open Nearby</option>
+                <option value="local_services">Local Services</option>
+                <option value="events">Events & Activities</option>
+              </optgroup>
+            </select>
+            <p style={styles.helper}>
+              Choose the category that best describes your post.
+            </p>
+          </div>
+
           <div style={styles.field}>
             <label style={styles.label}>Description</label>
             <textarea
@@ -386,6 +427,20 @@ const styles = {
     fontSize: "12px",
     color: "#8991a2",
     margin: "-2px 0 12px",
+  },
+
+  select: {
+    width: "100%",
+    boxSizing: "border-box",
+    padding: "14px 15px",
+    borderRadius: "12px",
+    border: "1px solid #dfe3eb",
+    background: "#fbfcfe",
+    color: "#263247",
+    fontSize: "14px",
+    fontFamily: "inherit",
+    outlineColor: "#f97316",
+    cursor: "pointer",
   },
 
   textarea: {
