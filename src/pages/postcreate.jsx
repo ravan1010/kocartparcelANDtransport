@@ -1,8 +1,10 @@
 
 import React, { useState } from "react";
 import api from "../../api.js";
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
+  const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [image, setImage] = useState([]);
   const [category, setcategory] = useState("");
@@ -124,6 +126,10 @@ export default function CreatePost() {
 
       const fileInput = document.getElementById("post-images");
       if (fileInput) fileInput.value = "";
+
+      if(response.data.success === true){
+        navigate("/")
+      }
     } catch (error) {
       alert(
         error.response?.data?.message ||
