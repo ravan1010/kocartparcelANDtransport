@@ -127,7 +127,7 @@ export default function CreatePost() {
     } catch (error) {
       alert(
         error.response?.data?.message ||
-          "Failed to create post. Please try again."
+        "Failed to create post. Please try again."
       );
       console.error(error);
     } finally {
@@ -191,15 +191,27 @@ export default function CreatePost() {
 
           <div style={styles.field}>
             <label style={styles.label}>Description</label>
+
             <textarea
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+
+                // Allow letters, numbers, spaces and basic punctuation
+                const cleaned = value.replace(
+                  /[^a-zA-Z0-9\s.,!?'-]/g,
+                  ""
+                );
+
+                setDescription(cleaned);
+              }}
               placeholder="What's happening? Write something..."
               rows={5}
               maxLength={2000}
               style={styles.textarea}
               required
             />
+
             <div style={styles.counter}>
               {description.length}/2000
             </div>
