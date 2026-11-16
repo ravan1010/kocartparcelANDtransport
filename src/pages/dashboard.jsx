@@ -98,12 +98,6 @@ const AdminDashboard = () => {
             </p>
           </div>
 
-          <button
-            style={styles.createButton}
-            onClick={() => navigate("/admin/post")}
-          >
-            + Create Post
-          </button>
         </header>
 
         {/* Main Card */}
