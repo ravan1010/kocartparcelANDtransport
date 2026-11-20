@@ -17,10 +17,9 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/admin-auth-success" element={<Verify />} />   
                     <Route element={<Protected />}>
-                    <Route path="/Details" element={<MerchantRegister />} />                                         
-                     <Route path='/' element={<AdminDashboard />} />
-                                            <Route path="/admin/post" element={<CreatePost />} />
-
+                            <Route path="/details" element={<MerchantRegister />} />                                         
+                            <Route path='/' element={<AdminDashboard />} />
+                            <Route path="/admin/post" element={<CreatePost />} />
                     </Route>
                 </Routes>    
             </Router>
