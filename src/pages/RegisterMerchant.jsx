@@ -1,29 +1,57 @@
 
 import React, { useState } from "react";
-import axios from "axios";
-import api from "../api";
+import api from "../../api.js";
+import { generateAndSaveFCMToken } from "../utili/token.js";
 
 export default function MerchantRegister() {
   const [form, setForm] = useState({
     merchantName: "",
     image: "",
     upiId: "",
-    fcmToken: "",
     latitude: "",
     longitude: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [locationLoading, setLocationLoading] = useState(false);
+  const [notificationLoading, setNotificationLoading] = useState(false);
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
+    setForm((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  // Get current GPS location
+  // Image to Base64
+  const handleImageUpload = (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+      alert("Only JPG, PNG and WEBP allowed");
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      alert("Image must be below 2MB");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setForm((prev) => ({
+        ...prev,
+        image: reader.result,
+      }));
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  // GPS Location
   const getLocation = () => {
     if (!navigator.geolocation) {
       alert("Geolocation not supported");
@@ -50,16 +78,45 @@ export default function MerchantRegister() {
     );
   };
 
+  // Enable Notifications
+  const enableNotifications = async () => {
+    try {
+      setNotificationLoading(true);
+
+      await generateAndSaveFCMToken();
+
+    } catch (error) {
+      console.error(error);
+      alert("Notification setup failed");
+    } finally {
+      setNotificationLoading(false);
+    }
+  };
+
+  // Register Merchant
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!form.image) {
+      alert("Please upload merchant image");
+      return;
+    }
+
+    if (form.latitude === "" || form.longitude === "") {
+      alert("Please get your current location");
+      return;
+    }
 
     try {
       setLoading(true);
 
-      const response = await api.post(
-        "/api/register",
-        form
-      );
+      const response = await api.post("/api/register", {
+        merchantName: form.merchantName,
+        image: form.image,
+        upiId: form.upiId,
+        latitude: Number(form.latitude),
+        longitude: Number(form.longitude),
+      });
 
       alert("Merchant registered successfully!");
 
@@ -68,14 +125,14 @@ export default function MerchantRegister() {
       setForm({
         merchantName: "",
         image: "",
-        upiId: "", 
-        fcmToken: "",
+        upiId: "",
         latitude: "",
         longitude: "",
       });
 
     } catch (error) {
       console.error(error);
+
       alert(
         error.response?.data?.message ||
         "Merchant registration failed"
@@ -90,22 +147,24 @@ export default function MerchantRegister() {
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-6 space-y-5"
+        className="w-full max-w-lg bg-white rounded-2xl shadow-xl p-6 space-y-5"
       >
+
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
             Merchant Registration
           </h1>
           <p className="text-sm text-gray-500 mt-1">
-            Register your business and UPI details
+            Register your business details
           </p>
         </div>
 
         {/* Merchant Name */}
         <div>
-          <label className="block text-sm font-medium mb-2">
+          <label className="block text-sm font-semibold mb-2">
             Merchant Name
           </label>
+
           <input
             type="text"
             name="merchantName"
@@ -113,38 +172,43 @@ export default function MerchantRegister() {
             onChange={handleChange}
             placeholder="Enter merchant name"
             required
-            className="w-full border rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        {/* Image URL */}
+        {/* Merchant Image */}
         <div>
-          <label className="block text-sm font-medium mb-2">
-            Merchant Image URL
+          <label className="block text-sm font-semibold mb-2">
+            Merchant Image
           </label>
+
           <input
-            type="url"
-            name="image"
-            value={form.image}
-            onChange={handleChange}
-            placeholder="https://example.com/image.jpg"
-            className="w-full border rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-500"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            onChange={handleImageUpload}
+            className="w-full border border-gray-300 rounded-xl p-3"
           />
 
           {form.image && (
-            <img
-              src={form.image}
-              alt="Merchant preview"
-              className="mt-3 w-24 h-24 rounded-xl object-cover"
-            />
+            <div className="mt-3 flex items-center gap-3">
+              <img
+                src={form.image}
+                alt="Merchant"
+                className="w-24 h-24 object-cover rounded-xl border"
+              />
+              <span className="text-sm text-green-600">
+                Image ready ✓
+              </span>
+            </div>
           )}
         </div>
 
         {/* UPI ID */}
         <div>
-          <label className="block text-sm font-medium mb-2">
+          <label className="block text-sm font-semibold mb-2">
             UPI ID
           </label>
+
           <input
             type="text"
             name="upiId"
@@ -152,28 +216,35 @@ export default function MerchantRegister() {
             onChange={handleChange}
             placeholder="merchant@okaxis"
             required
-            className="w-full border rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        {/* FCM Token */}
-        <div>
-          <label className="block text-sm font-medium mb-2">
-            FCM Token
-          </label>
-          <input
-            type="text"
-            name="fcmToken"
-            value={form.fcmToken}
-            onChange={handleChange}
-            placeholder="Enter FCM token (optional)"
-            className="w-full border rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-500"
-          />
+        {/* Notifications */}
+        <div className="bg-purple-50 border border-purple-100 p-4 rounded-xl">
+          <h3 className="font-semibold text-gray-800 mb-2">
+            Notifications
+          </h3>
+
+          <p className="text-sm text-gray-500 mb-3">
+            Receive nearby customer requests and merchant alerts.
+          </p>
+
+          <button
+            type="button"
+            onClick={enableNotifications}
+            disabled={notificationLoading}
+            className="w-full bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-xl font-semibold disabled:opacity-50"
+          >
+            {notificationLoading
+              ? "Enabling..."
+              : "Allow Notifications"}
+          </button>
         </div>
 
-        {/* Location */}
-        <div className="bg-blue-50 p-4 rounded-xl space-y-3">
-          <h3 className="font-semibold text-gray-800">
+        {/* GPS Location */}
+        <div className="bg-blue-50 border border-blue-100 p-4 rounded-xl">
+          <h3 className="font-semibold text-gray-800 mb-3">
             Merchant Location
           </h3>
 
@@ -188,10 +259,13 @@ export default function MerchantRegister() {
               : "Get Current GPS Location"}
           </button>
 
-          {form.latitude && (
-            <div className="text-sm text-gray-700">
+          {form.latitude !== "" && (
+            <div className="mt-3 text-sm text-gray-700">
               <p>Latitude: {form.latitude}</p>
               <p>Longitude: {form.longitude}</p>
+              <p className="text-green-600 mt-1">
+                Location captured ✓
+              </p>
             </div>
           )}
         </div>
