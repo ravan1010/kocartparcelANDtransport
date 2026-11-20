@@ -5,6 +5,7 @@ import Verify from './pages/varify';
 import Protected from './auth/authroute';
 import AdminDashboard from './pages/dashboard';
 import CreatePost from './pages/postcreate';
+import MerchantRegister from './pages/RegisterMerchant';
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/admin-auth-success" element={<Verify />} />   
                     <Route element={<Protected />}>
-                                            <Route path='/' element={<AdminDashboard />} />
+                    <Route path="/Details" element={<MerchantRegister />} />                                         
+                     <Route path='/' element={<AdminDashboard />} />
                                             <Route path="/admin/post" element={<CreatePost />} />
 
                     </Route>
